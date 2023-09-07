@@ -16,7 +16,7 @@ function Navigation() {
         to={"/"}
       >
         <svg
-          className={` w-14 `}
+          className={` w-10 `}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 -960 960 960"
         >
@@ -34,7 +34,7 @@ function Navigation() {
         to={"/demand"}
       >
         <svg
-          className={`transition-all duration-700 ease-linear w-14 `}
+          className={` w-10 `}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 -960 960 960"
         >
@@ -53,7 +53,7 @@ function Navigation() {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className={` w-14 `}
+          className={` w-10 `}
           viewBox="0 -960 960 960"
         >
           <path
@@ -71,7 +71,7 @@ function Navigation() {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className={` w-14 `}
+          className={` w-10 `}
           viewBox="0 -960 960 960"
         >
           <path
@@ -89,7 +89,7 @@ function Navigation() {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className={` w-14 `}
+          className={` w-10 `}
           viewBox="0 -960 960 960"
         >
           <path
