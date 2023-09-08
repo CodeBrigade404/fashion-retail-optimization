@@ -5,7 +5,7 @@ function Head() {
     <>
       {/* search */}
       <div className="search w-[100%]">
-        <div className="ml-10 relative">
+        <div className="ml-5 relative">
           <div className="absolute top-5 left-3">
             <svg
               class="w-7 h-7 text-gray-500 dark:text-gray-400"

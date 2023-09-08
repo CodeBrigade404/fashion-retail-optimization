@@ -1,6 +1,9 @@
 import React from "react";
 import Head from "../../components/demand/Head";
 import DashBoard from "../../components/demand/DashBoard";
+import DemandProductTable from "../../components/demand/DemandProductTable";
+import ProgressBar from "../../components/demand/table/ProgressBar";
+import DemandReport from "../../components/demand/DemandReport";
 
 function Demand() {
   return (
@@ -11,8 +14,10 @@ function Demand() {
       >
         <Head />
       </div>
-      <div className="downBox h-[7000px] ">
+      <div className="downBox ">
         <DashBoard />
+        <DemandProductTable />
+        <DemandReport />
       </div>
     </div>
   );
