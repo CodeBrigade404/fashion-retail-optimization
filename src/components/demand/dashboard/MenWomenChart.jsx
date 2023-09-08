@@ -1,7 +1,6 @@
 import {
-  BarChart,
-  Bar,
-  Cell,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -55,27 +54,48 @@ const data = [
   },
 ];
 
-function Barchart() {
+function MenWomenChart() {
   return (
-    <div className="ageBarChart">
+    <div className="menWomenChart w-full h-full">
       <h1 className="mb-5 text-3xl font-bold " style={{ color: "#494FBF" }}>
-        Age Segmentation
+        Men vs Women
       </h1>
-      <div className="ageChart">
-        <ResponsiveContainer width={250} height={200}>
-          <BarChart data={data}>
+      <div className="menWomenChart w-full h-full mt-10">
+        <ResponsiveContainer width="100%" height={360}>
+          <LineChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="pv" fill="#EC5959" />
-            <Bar dataKey="uv" fill="#16BFD6" />
-          </BarChart>
+            <Line
+              type="monotone"
+              dataKey="pv"
+              stroke="#EC5959"
+              strokeWidth={3}
+              activeDot={{ r: 8 }}
+            />
+            <Line
+              type="monotone"
+              dataKey="uv"
+              stroke="#16BFD6"
+              strokeWidth={3}
+            />
+          </LineChart>
         </ResponsiveContainer>
       </div>
     </div>
   );
 }
 
-export default Barchart;
+export default MenWomenChart;

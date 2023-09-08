@@ -1,7 +1,15 @@
-import React from "react";
+import TopNavTabs from "../../components/navigation/TopNavButtons";
+import StockCard from "../../components/stock/stockCards";
 
-function Stock() {
-  return <div className="font-black text-9xl text-center">Stock</div>;
-}
+const Stock = () => {
+  return (
+    <div>
+      <TopNavTabs />
+      <div className="container mx-auto">
+        <StockCard />
+      </div>
+    </div>
+  );
+};
 
 export default Stock;

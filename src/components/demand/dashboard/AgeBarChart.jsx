@@ -55,14 +55,14 @@ const data = [
   },
 ];
 
-function Barchart() {
+function AgeBarChart() {
   return (
     <div className="ageBarChart">
       <h1 className="mb-5 text-3xl font-bold " style={{ color: "#494FBF" }}>
         Age Segmentation
       </h1>
       <div className="ageChart">
-        <ResponsiveContainer width={250} height={200}>
+        <ResponsiveContainer width="100%" height={180}>
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
@@ -78,4 +78,4 @@ function Barchart() {
   );
 }
 
-export default Barchart;
+export default AgeBarChart;
