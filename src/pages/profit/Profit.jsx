@@ -33,7 +33,7 @@ const Profit = () => {
             Export
           </button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 mt-8">
+        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-4 gap-6 mt-8\">
           <div className="bg-white rounded-lg p-6 text-center shadow-md">
             <h2 className="text-xl font-semibold text-blue-900">
               Profit Prediction (Monthly)
@@ -51,6 +51,7 @@ const Profit = () => {
               100,000
             </h1>
           </div>
+          
         </div>
       </div>
 
