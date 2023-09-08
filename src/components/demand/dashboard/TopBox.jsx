@@ -1,13 +1,13 @@
-import { topDealUsers } from "../../../pages/demand/data/data";
+import { topDealProducts } from "../../../pages/demand/data/data";
 
 function TopBox() {
   return (
     <div className="topBox" style={{ fontFamily: "Inter" }}>
       <h1 className="mb-5 text-3xl font-bold " style={{ color: "#494FBF" }}>
-        Top Products
+        7 Top Products
       </h1>
       <div className="list">
-        {topDealUsers.map((user) => (
+        {topDealProducts.map((user) => (
           <div className="flex items-center justify-between mb-7" key={user.id}>
             <div className=" flex gap-5">
               <img

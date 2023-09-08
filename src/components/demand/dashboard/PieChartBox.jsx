@@ -1,15 +1,15 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 const data = [
-  { name: "Mobile", value: 400, color: "#16BFD6" },
-  { name: "Desktop", value: 300, color: "#1BDF83" },
-  { name: "Laptop", value: 300, color: " #FFEA2B" },
-  { name: "Tablet", value: 200, color: "#EC5959" },
+  { name: "Women", value: 4000, color: "#16BFD6" },
+  { name: "Men", value: 2000, color: "#1BDF83" },
+  { name: "Shoe", value: 1900, color: "#FFEA2B" },
+  { name: "Other", value: 500, color: "#EC5959" },
 ];
 function PieChartBox() {
   return (
     <div className="pieChartBox h-full flex flex-col justify-center">
       <h1 className="mb-5 text-3xl font-bold " style={{ color: "#494FBF" }}>
-        Leads by Source
+        Category Comparison
       </h1>
       <div className="chart flex items-center justify-center h-full w-full">
         <ResponsiveContainer width="99%" height={300}>
@@ -45,7 +45,7 @@ function PieChartBox() {
               />
               <span>{item.name}</span>
             </div>
-            <span>{item.value}</span>
+            <span>{Math.floor((item.value / 8400) * 100)}%</span>
           </div>
         ))}
       </div>
