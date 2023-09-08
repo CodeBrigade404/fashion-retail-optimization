@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegCalendarMinus } from "react-icons/fa";
 import { Link } from "react-router-dom"; 
+import Barchart from '/src/pages/profit/Barchart.jsx'
 
 const Profit = () => {
   // Sample table data
@@ -29,11 +30,9 @@ const Profit = () => {
           <h1 className="text-4xl md:text-5xl font-semibold text-blue-900 leading-tight cursor-pointer">
             PROFIT PREDICTION
           </h1>
-          <button className="mt-4 md:mt-0 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:shadow-xl cursor-pointer">
-            Export
-          </button>
+          
         </div>
-        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-4 gap-6 mt-8\">
+        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-3 gap-6 mt-8\">
           <div className="bg-white rounded-lg p-6 text-center shadow-md">
             <h2 className="text-xl font-semibold text-blue-900">
               Profit Prediction (Monthly)
@@ -51,11 +50,21 @@ const Profit = () => {
               100,000
             </h1>
           </div>
+
+          <div className="bg-white rounded-lg p-6 text-center shadow-md">
+            <h2 className="text-xl font-semibold text-blue-900">
+              No. of Products
+            </h2>
+            <h1 className="text-3xl font-bold text-blue-700 mt-4">
+              100,000
+            </h1>
+          </div>
           
         </div>
       </div>
-
-      <div className="container mx-auto mt-8 p-4 border border-gray-300 rounded-lg max-h-[400px] overflow-y-auto">
+<div className="flex">
+  
+      <div className="container mx-auto mt-4 p-2 border border-gray-300 rounded-lg max-h-[200px] overflow-y-auto">
         <div className="table-wrapper">
           <table className="min-w-full">
             <thead>
@@ -87,6 +96,15 @@ const Profit = () => {
           </table>
         </div>
       </div>
+      <div className="barchart">
+        <Barchart/>
+      </div>
+      
+      </div>
+      
+
+
+      
     </div>
   );
 };
