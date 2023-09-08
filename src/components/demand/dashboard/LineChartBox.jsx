@@ -9,10 +9,7 @@ function LineChartBox(props) {
         style={{ flex: "3" }}
       >
         <div className="title flex items-center gap-[10px]">
-          <img
-            src={"https://img.icons8.com/ios/50/standing-woman.png"}
-            className="w-8 h-8"
-          />
+          <img src={props.icon} className="w-8 h-8" />
           <span className="">{props.title}</span>
         </div>
         <h1 className="text-2xl font-bold">{props.number}</h1>
