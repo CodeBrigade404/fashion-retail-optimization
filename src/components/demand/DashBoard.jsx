@@ -15,7 +15,6 @@ import MenWomenChart from "./dashboard/MenWomenChart";
 function DashBoard() {
   const boxStyle = {
     padding: "20px",
-    borderRadius: "10px",
     backgroundColor: "#fff",
     borderRadius: "6px",
     boxShadow: "0px 2px 10px 0px rgba(0, 0, 0, 0.10)",
