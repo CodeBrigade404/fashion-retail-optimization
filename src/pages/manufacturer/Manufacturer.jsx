@@ -34,7 +34,7 @@ function Manufacturer() {
   }, [activeButton]);
 
   return (
-    <div className="font-black text-9xl w-full  flex flex-col text-center">
+    <div className="  w-full  flex flex-col text-center">
       <Nav activeButton={activeButton} setActiveButton={setActiveButton} />
 
       <div className=" pt-20" ref={page1}>

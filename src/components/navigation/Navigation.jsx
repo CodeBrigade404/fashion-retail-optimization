@@ -7,20 +7,22 @@ function Navigation() {
   };
 
   return (
-    <nav className="rounded-lg bg-white rounded-xl   my-[4%] mx-4 justify-between  h-[95%] fixed  drop-shadow-lg w-28 flex flex-col  ">
-      <svg
-        className="mt-8 "
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 -960 960 960"
-      >
-        <path
-          fill="black"
-          d="M480-80 120-280v-400l360-200 360 200v400L480-80ZM364-590q23-24 53-37t63-13q33 0 63 13t53 37l120-67-236-131-236 131 120 67Zm76 396v-131q-54-14-87-57t-33-98q0-11 1-20.5t4-19.5l-125-70v263l240 133Zm40-206q33 0 56.5-23.5T560-480q0-33-23.5-56.5T480-560q-33 0-56.5 23.5T400-480q0 33 23.5 56.5T480-400Zm40 206 240-133v-263l-125 70q3 10 4 19.5t1 20.5q0 55-33 98t-87 57v131Z"
-        />
-      </svg>
-      <div>
+    <nav className="rounded-lg bg-white rounded-xl   mt-[2%] mx-4  h-[90%] fixed  drop-shadow-lg w-[6.5%] flex flex-col justify-between  ">
+      <div className="w-[80%] self-center">
+        <svg
+          className="mt-[10%] "
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 -960 960 960"
+        >
+          <path
+            fill="black"
+            d="M480-80 120-280v-400l360-200 360 200v400L480-80ZM364-590q23-24 53-37t63-13q33 0 63 13t53 37l120-67-236-131-236 131 120 67Zm76 396v-131q-54-14-87-57t-33-98q0-11 1-20.5t4-19.5l-125-70v263l240 133Zm40-206q33 0 56.5-23.5T560-480q0-33-23.5-56.5T480-560q-33 0-56.5 23.5T400-480q0 33 23.5 56.5T480-400Zm40 206 240-133v-263l-125 70q3 10 4 19.5t1 20.5q0 55-33 98t-87 57v131Z"
+          />
+        </svg>
+      </div>
+      <div className="flex flex-col h-[80%] ">
         <NavLink
-          className={`  transition-colors rounded-xl duration-1000 ease-out flex h-28 place-content-center ${
+          className={`  transition-colors rounded-xl duration-1000 ease-out flex h-[17%] place-content-center ${
             isNavLinkActive("/") ? "bg-[#000000]" : ""
           }`}
           to={"/"}
@@ -38,7 +40,7 @@ function Navigation() {
         </NavLink>
 
         <NavLink
-          className={` transition-colors rounded-xl duration-1000 ease-out flex h-28 place-content-center ${
+          className={` transition-colors rounded-xl duration-1000 ease-out flex h-[17%] place-content-center ${
             isNavLinkActive("/demand") ? "bg-[#000000]" : ""
           }`}
           to={"/demand"}
@@ -56,7 +58,7 @@ function Navigation() {
         </NavLink>
 
         <NavLink
-          className={`transition-colors rounded-xl duration-1000 ease-out  flex h-28 place-content-center ${
+          className={`transition-colors rounded-xl duration-1000 ease-out  flex h-[17%] place-content-center ${
             isNavLinkActive("/profit") ? "bg-[#000000]" : ""
           }`}
           to={"/profit"}
@@ -74,7 +76,7 @@ function Navigation() {
         </NavLink>
 
         <NavLink
-          className={` transition-colors rounded-xl duration-1000ease-out flex h-28 place-content-center ${
+          className={` transition-colors rounded-xl duration-1000ease-out flex h-[17%] place-content-center ${
             isNavLinkActive("/manufacturer") ? "bg-[#000000]" : ""
           }`}
           to={"/manufacturer"}
@@ -92,7 +94,7 @@ function Navigation() {
         </NavLink>
 
         <NavLink
-          className={` transition-colors rounded-xl duration-1000 ease-out flex h-28 place-content-center mb-10 ${
+          className={` transition-colors rounded-xl duration-1000 ease-out flex h-[17%] place-content-center  ${
             isNavLinkActive("/stock") ? "bg-[#000000]" : ""
           }`}
           to={"/stock"}
