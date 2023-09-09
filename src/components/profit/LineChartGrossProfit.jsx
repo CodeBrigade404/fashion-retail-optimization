@@ -56,12 +56,12 @@ const LineChartGrossProfit = () => {
 	];
 
 	return (
-		<div className="menWomenChart w-full h-full">
+		<div className="menWomenChart w-full h-full ">
 			<h1 className="mb-5 text-3xl font-bold" style={{ color: "#494FBF" }}>
 				Gross Profit
 			</h1>
-			<div className="menWomenChart w-full h-full mt-10">
-				<ResponsiveContainer width="100%" height={360}>
+			<div className="menWomenChart w-full h-full mt-10 z-10">
+				<ResponsiveContainer width="100%" height={470}>
 					<LineChart
 						width={500}
 						height={300}
