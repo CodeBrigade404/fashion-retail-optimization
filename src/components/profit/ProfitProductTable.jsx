@@ -224,7 +224,7 @@ function DemandProductTable() {
 								sx={{
 									// border: 3,
 									"& .MuiDataGrid-columnHeaders": {
-										backgroundColor: "#0E606C",
+										backgroundColor: "#2B2B2B",
 										color: "#fff",
 										fontFamily: "Inter",
 										fontSize: "16px",
@@ -238,12 +238,12 @@ function DemandProductTable() {
 										fontWeight: "600",
 									},
 									"& .MuiDataGrid-footerContainer": {
-										backgroundColor: "#0E606C",
+										backgroundColor: "#fff",
 									},
 									"& .MuiDataGrid-toolbarContainer": {
 										"& .MuiButton-text": {
 											fontSize: "18px !important",
-											color: "green",
+											color: "black",
 										},
 									},
 								}}

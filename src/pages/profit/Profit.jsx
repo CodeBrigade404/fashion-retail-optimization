@@ -15,7 +15,12 @@ const Profit = () => {
 
 	return (
 		<div>
-			<div className="container mx-auto">
+			<div
+				style={{ zIndex: 999 }}
+				className=" backdrop-blur-sm fixed pr-28 text-2xl w-full h-20 flex font-tinos items-center justify-between">
+				<h1 className=" h-fit ml-10 ">Profit Analysis</h1>
+			</div>
+			<div className="container pt-12">
 				<div>
 					<div className="container mx-auto">
 						{/* Title */}
@@ -73,9 +78,10 @@ const Profit = () => {
 							<div
 								className="w-full bg-white rounded-lg shadow-lg p-4"
 								style={{ zIndex: 1 }}>
-								<h3 className="mb-5 text-3xl font-bold text-center">
+								<h2 className="text-left  ml-4 font-tinos text-2xl">
 									Profit-Product Table
-								</h3>
+								</h2>
+
 								<div className="container mx-auto mt-4 p-2 border border-gray-300 rounded-lg max-h-[680px]">
 									<ProductTable />
 								</div>
