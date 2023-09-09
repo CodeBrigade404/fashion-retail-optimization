@@ -1,4 +1,5 @@
 import { useState } from "react";
+import HorizontalLinearAlternativeLabelStepper from "./Stepper";
 
 export default function CreateStocks() {
   const boxStyle = {
@@ -46,10 +47,14 @@ export default function CreateStocks() {
               Store Fashion Product
             </div>
           </h2>
+
           <p className="mt-1 text-sm leading-6 text-gray-600">
             This information will be displayed publicly, so be careful what you
             are storing.
           </p>
+          <div className="p-2 pb-14 mt-8">
+            <HorizontalLinearAlternativeLabelStepper />
+          </div>
 
           <div className="mt-10 grid grid-cols-1 gap-6">
             <div>
