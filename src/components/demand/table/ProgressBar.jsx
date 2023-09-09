@@ -4,13 +4,13 @@ import Typography from "@mui/joy/Typography";
 function ProgressBar(props) {
   var color = "";
   if (props.value > 100) {
-    color = "#EC5959"; // Use your custom color here
+    color = "#E77E7E"; // Use your custom color here
   }
   if (props.value > 50 && props.value < 100) {
-    color = "#1BDF83"; // Use your custom color here
+    color = "#83DBB1"; // Use your custom color here
   }
   if (props.value < 50) {
-    color = "#FFEA2B"; // Use your custom color here
+    color = "#DECE3B"; // Use your custom color here
   }
   return (
     <div className="w-[130px] mr-10">

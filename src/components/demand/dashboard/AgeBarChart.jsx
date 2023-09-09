@@ -56,9 +56,9 @@ const data = [
 
 function AgeBarChart() {
   return (
-    <div className="ageBarChart">
-      <h1 className="mb-5 text-3xl font-bold " style={{ color: "#494FBF" }}>
-        Age Segmentation
+    <div className="ageBarChart font-tinos">
+      <h1 className="mb-5 text-3xl font-bold " style={{ color: "#000" }}>
+        Age Demand
       </h1>
       <div className="ageChart">
         <ResponsiveContainer width="100%" height={180}>
@@ -68,8 +68,8 @@ function AgeBarChart() {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="Women" fill="#EC5959" />
-            <Bar dataKey="Men" fill="#16BFD6" />
+            <Bar dataKey="Women" fill="#B38383" />
+            <Bar dataKey="Men" fill="#9BDAE3" />
           </BarChart>
         </ResponsiveContainer>
       </div>

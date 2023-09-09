@@ -1,15 +1,15 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 const data = [
-  { name: "Women", value: 4000, color: "#16BFD6" },
-  { name: "Men", value: 2000, color: "#1BDF83" },
-  { name: "Shoe", value: 1900, color: "#FFEA2B" },
-  { name: "Other", value: 500, color: "#EC5959" },
+  { name: "Women", value: 4000, color: "#80D9E6" },
+  { name: "Men", value: 2000, color: "#83DBB1" },
+  { name: "Shoe", value: 1900, color: "#DECE3B" },
+  { name: "Other", value: 500, color: "#E77E7E" },
 ];
 function PieChartBox() {
   return (
-    <div className="pieChartBox h-full flex flex-col justify-center">
-      <h1 className="mb-5 text-3xl font-bold " style={{ color: "#494FBF" }}>
-        Category Comparison
+    <div className="pieChartBox h-full flex flex-col justify-center font-tinos">
+      <h1 className="mb-5 text-3xl font-bold " style={{ color: "#000" }}>
+        Demand Comparison
       </h1>
       <div className="chart flex items-center justify-center h-full w-full">
         <ResponsiveContainer width="99%" height={300}>
