@@ -5,6 +5,7 @@ import Profit from "./pages/profit/Profit";
 import Manufacturer from "./pages/manufacturer/Manufacturer";
 import Stock from "./pages/stock/Stock";
 import Navigation from "./components/navigation/Navigation";
+
 function App() {
 	return (
 		<>

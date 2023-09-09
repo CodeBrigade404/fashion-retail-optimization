@@ -6,6 +6,8 @@ const tableData = [
 	{ id: 1, name: "Product 1", revenue: 100 },
 	{ id: 2, name: "Product 2", revenue: 200 },
 	{ id: 3, name: "Product 3", revenue: 150 },
+	{ id: 3, name: "Product 3", revenue: 150 },
+	{ id: 3, name: "Product 3", revenue: 150 },
 	// Add more data as needed
 ];
 
@@ -24,14 +26,12 @@ function ProductTable() {
 		<Fragment>
 			<div>
 				<div className="table-wrapper">
-					<table className="min-w-full">
+					<table className="min-w-full hover:table-fixed">
 						<thead>
 							<tr>
-								<th className="text-left px-6 py-3 bg-gray-200">ID</th>
-								<th className="text-left px-6 py-3 bg-gray-200">
-									Product Name
-								</th>
-								<th className="text-left px-6 py-3 bg-gray-200">Revenue</th>
+								<th className="bg-gray-200 font-bold">ID</th>
+								<th className="bg-gray-200 font-bold">Product Name</th>
+								<th className="bg-gray-200 font-bold">Profit(Rs.)</th>
 							</tr>
 						</thead>
 					</table>

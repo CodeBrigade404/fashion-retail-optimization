@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import LineChartNetProfit from "../../components/profit/LineChartNetProfit";
-import LineChartGrossProfit from "../../components/profit/LineChartGrossProfit";
+import LineChartNetProfit from "../../components/profit/LineChartEachNetProfit";
+import LineChartGrossProfit from "../../components/profit/LineChartEachGrossProfit";
 
 const sampleImage =
 	"https://www.beverlystreet.lk/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/5/5/5594.jpg";
@@ -14,22 +14,13 @@ function ItemDetails({ isVisible, onClose }) {
 
 	// Example product details
 	const productDetails = {
+		serialNumber: "123456",
 		productName: "Ladies T-Shirt - Grey",
-		description: "A comfortable and stylish grey t-shirt for women.",
-		material: "Cotton",
-		sizes: ["Small", "Medium", "Large"],
-		colors: ["Grey", "Black", "White"],
-		designAndStyle: "Plain with a V-neck",
 		pricePerUnit: "$19.99",
-		minimumOrderQuantity: 10,
-		leadTime: "2-3 weeks",
-		shippingAndDelivery: "Standard and Express options available",
-		paymentTerms: "Credit Card, PayPal, Bank Transfer",
-		returnAndExchangePolicy: "30-day return policy, no-hassle exchanges",
-		customizationOptions: "Custom labels and logos available",
-		qualityAssurance:
-			"Stringent quality control and 100% satisfaction guarantee",
-		certifications: "Eco-friendly and sustainable materials",
+		costPrice: "$10.00",
+		quantity: 100,
+		profit: "$9.99",
+		image: sampleImage,
 	};
 
 	// Create references for scrolling to sections
@@ -87,104 +78,44 @@ function ItemDetails({ isVisible, onClose }) {
 					</div>
 
 					{/* Product and Material Details */}
-					<div className="grid grid-cols-2 gap-2 " ref={detailsSectionRef}>
-						<div className="tile">
-							<img
-								src={sampleImage}
-								alt="Sample Image"
-								className="rounded-md shadow-lg"
-							/>
-						</div>
+					<div className="grid grid-cols-1 gap-2 " ref={detailsSectionRef}>
 						<div className="tile">
 							<h1 className="text-2xl font-semibold mb-4">
-								{productDetails.productName}
+								Item Serial Number: {productDetails.serialNumber}
 							</h1>
-
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">Description:</strong>{" "}
-								<span className="text-sm">{productDetails.description}</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">Material:</strong>{" "}
-								<span className="text-sm">{productDetails.material}</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">Sizes:</strong>{" "}
-								<span className="text-sm">
-									{productDetails.sizes.join(", ")}
-								</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">Colors:</strong>{" "}
-								<span className="text-sm">
-									{productDetails.colors.join(", ")}
-								</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">
-									Design and Style:
-								</strong>{" "}
-								<span className="text-sm">{productDetails.designAndStyle}</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">Price:</strong>{" "}
-								<span className="text-sm">{productDetails.pricePerUnit}</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">
-									Minimum Order Quantity (MOQ):
-								</strong>{" "}
-								<span className="text-sm">
-									{productDetails.minimumOrderQuantity}
-								</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">Lead Time:</strong>{" "}
-								<span className="text-sm">{productDetails.leadTime}</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">
-									Shipping and Delivery:
-								</strong>{" "}
-								<span className="text-sm">
-									{productDetails.shippingAndDelivery}
-								</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">
-									Payment Terms:
-								</strong>{" "}
-								<span className="text-sm">{productDetails.paymentTerms}</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">
-									Return and Exchange Policy:
-								</strong>{" "}
-								<span className="text-sm">
-									{productDetails.returnAndExchangePolicy}
-								</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">
-									Customization Options:
-								</strong>{" "}
-								<span className="text-sm">
-									{productDetails.customizationOptions}
-								</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">
-									Quality Assurance:
-								</strong>{" "}
-								<span className="text-sm">
-									{productDetails.qualityAssurance}
-								</span>
-							</div>
-							<div className="mb-2">
-								<strong className="text-gray-600 text-sm">
-									Certifications:
-								</strong>{" "}
-								<span className="text-sm">{productDetails.certifications}</span>
+							<div className="flex items-center justify-center">
+								<img
+									src={productDetails.image}
+									alt="Product Image"
+									className="rounded-md shadow-lg mb-4"
+									style={{ maxWidth: "300px" }} // Adjust the maxWidth as needed
+								/>
+								<div className="ml-6">
+									<strong className="text-gray-600 text-sm">
+										Product Name:
+									</strong>{" "}
+									<span className="text-sm">{productDetails.productName}</span>
+									<div className="mb-2">
+										<strong className="text-gray-600 text-sm">Price:</strong>{" "}
+										<span className="text-sm">
+											{productDetails.pricePerUnit}
+										</span>
+									</div>
+									<div className="mb-2">
+										<strong className="text-gray-600 text-sm">
+											Cost Price:
+										</strong>{" "}
+										<span className="text-sm">{productDetails.costPrice}</span>
+									</div>
+									<div className="mb-2">
+										<strong className="text-gray-600 text-sm">Quantity:</strong>{" "}
+										<span className="text-sm">{productDetails.quantity}</span>
+									</div>
+									<div className="mb-2">
+										<strong className="text-gray-600 text-sm">Profit:</strong>{" "}
+										<span className="text-sm">{productDetails.profit}</span>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -193,7 +124,7 @@ function ItemDetails({ isVisible, onClose }) {
 					<div
 						className="grid grid-cols-1 gap-6 mt-6"
 						ref={netProfitSectionRef}>
-						<div className="tile">
+						<div className="bg-white rounded-lg p-6 text-center shadow-md">
 							<LineChartNetProfit />
 						</div>
 					</div>
@@ -202,7 +133,7 @@ function ItemDetails({ isVisible, onClose }) {
 					<div
 						className="grid grid-cols-1 gap-6 mt-6"
 						ref={grossProfitSectionRef}>
-						<div className="tile">
+						<div className="bg-white rounded-lg p-6 text-center shadow-md">
 							<LineChartGrossProfit />
 						</div>
 					</div>

@@ -36,42 +36,28 @@ const Profit = () => {
 								gap: "20px",
 								padding: "20px",
 							}}></div>
-						<div className="grid md:grid-cols-3 ">
+						<div className="grid md:grid-cols-3 gap-4">
 							{/* Card 1: Profit Prediction */}
-							<div
-								className="bg-white rounded-lg p-6 text-center shadow-md"
-								style={boxStyle}>
-								<h2 className="text-xl font-semibold text-blue-900">
-									Profit Prediction (Monthly)
-								</h2>
-								<h1 className="text-3xl font-bold text-blue-700 mt-4">
-									Rs. 100,000
-								</h1>
-								<FaRegCalendarMinus className="text-4xl mt-4 text-blue-600" />
+							<div className="bg-white rounded-lg p-6 text-center shadow-md">
+								<h2 className="font-tinos">Profit Prediction (Monthly)</h2>
+								<h1 className="text-2xl font-bold">Rs. 100,000</h1>
+								<FaRegCalendarMinus className="title flex items-center gap-[10px]" />
 							</div>
 
 							{/* Card 2: No. of Products */}
 							<div className="bg-white rounded-lg p-6 text-center shadow-md">
-								<h2 className="text-xl font-semibold text-blue-900">
-									No. of Products
-								</h2>
-								<h1 className="text-3xl font-bold text-blue-700 mt-4">
-									100,000
-								</h1>
+								<h2 className="font-tinos">No. of Products</h2>
+								<h1 className="text-2xl font-bold">100,000</h1>
 							</div>
 
 							{/* Card 3: No. of Products */}
 							<div className="bg-white rounded-lg p-6 text-center shadow-md">
-								<h2 className="text-xl font-semibold text-blue-900">
-									No. of Products
-								</h2>
-								<h1 className="text-3xl font-bold text-blue-700 mt-4">
-									100,000
-								</h1>
+								<h2 className="font-tinos">No. of Products</h2>
+								<h1 className="text-2xl font-bold">100,000</h1>
 							</div>
 						</div>
 
-						<div className="flex mt-5">
+						<div className="flex mt-5 gap-4">
 							{/* Chart 1 */}
 							<div className="w-1/4 bg-white rounded-lg p-6 text-center shadow-md">
 								<Barchart />
@@ -98,7 +84,7 @@ const Profit = () => {
 							</div>
 						</div>
 
-						<div className="flex mt-5">
+						<div className="flex mt-5 gap-4">
 							<div className="w-2/4 bg-white rounded-lg p-6 text-center shadow-md">
 								<LineChartProfit />
 							</div>
