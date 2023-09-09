@@ -5,7 +5,7 @@ import DemandMonthChart from "./report/DemandMonthChart";
 function DemandReport() {
   return (
     <div className="demandProductTable h-screen mx-[20px] overflow-hidden">
-      <div className="content flex gap-6 justify-between h-[95%] ">
+      <div className="content flex gap-6 justify-between h-[85%] mt-[70px]">
         <div
           className="monthChartBox w-[60%] h-[100%]  bg-white rounded-md mt-5"
           style={{ boxShadow: "0px 2px 10px 0px rgba(0, 0, 0, 0.10)" }}

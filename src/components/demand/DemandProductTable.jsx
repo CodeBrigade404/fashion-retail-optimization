@@ -280,70 +280,72 @@ function CustomPagination() {
 function DemandProductTable() {
   return (
     <div
-      className="demandProductTable h-screen mx-[20px] bg-white rounded-md"
+      className="demandProductTable h-screen mx-[20px] rounded-md  overflow-hidden"
       style={{ boxShadow: "0px 2px 10px 0px rgba(0, 0, 0, 0.10)" }}
     >
-      <h1
-        className="mt-2 ml-4 text-[35px] font-bold "
-        style={{ color: "#494FBF" }}
-      >
-        Product Table
-      </h1>
-      <div className="DemandTable p-3">
-        <div
-          style={{
-            height: "90vh",
-            width: "100%",
-            overflow: "scroll",
-          }}
+      <div className="mt-[90px] bg-white ">
+        <h1
+          className="mt-2 ml-4 text-[35px] font-bold "
+          style={{ color: "#494FBF" }}
         >
-          <Box sx={{ height: "100%", width: "100%" }}>
-            <DataGrid
-              rows={rows}
-              columns={columns}
-              rowHeight={80}
-              initialState={{
-                pagination: {
-                  paginationModel: {
-                    pageSize: 10,
+          Product Table
+        </h1>
+        <div className="DemandTable p-3">
+          <div
+            style={{
+              height: "80vh",
+              width: "100%",
+              overflow: "scroll",
+            }}
+          >
+            <Box sx={{ height: "100%", width: "100%" }}>
+              <DataGrid
+                rows={rows}
+                columns={columns}
+                rowHeight={80}
+                initialState={{
+                  pagination: {
+                    paginationModel: {
+                      pageSize: 10,
+                    },
                   },
-                },
-              }}
-              slots={{
-                toolbar: GridToolbar,
-                pagination: CustomPagination,
-              }}
-              pageSizeOptions={[10]}
-              sx={{
-                // border: 3,
-                "& .MuiDataGrid-columnHeaders": {
-                  backgroundColor: "#0E606C",
-                  color: "#fff",
-                  fontFamily: "Inter",
-                  fontSize: "16px",
-                  fontWeight: "bold",
+                }}
+                slots={{
+                  toolbar: GridToolbar,
+                  pagination: CustomPagination,
+                }}
+                pageSizeOptions={[10]}
+                sx={{
+                  // border: 3,
+                  "& .MuiDataGrid-columnHeaders": {
+                    backgroundColor: "#0E606C",
+                    color: "#fff",
+                    fontFamily: "Inter",
+                    fontSize: "16px",
+                    fontWeight: "bold",
 
-                  // borderBottom: "6px red solid",
-                },
-                "& .MuiDataGrid-virtualScroller": {
-                  backgroundColor: "#fff",
-                  color: "#2B2B2B",
-                  fontFamily: "Inter",
-                  fontSize: "16px",
-                  fontWeight: "600",
-                },
-                "& .MuiDataGrid-footerContainer": {
-                  backgroundColor: "#0E606C",
-                },
-                "& .MuiDataGrid-toolbarContainer": {
-                  "& .MuiButton-text": {
-                    fontSize: "18px !important",
-                    color: "green",
+                    // borderBottom: "6px red solid",
                   },
-                },
-              }}
-            />
-          </Box>
+                  "& .MuiDataGrid-virtualScroller": {
+                    backgroundColor: "#fff",
+                    color: "#2B2B2B",
+                    fontFamily: "Inter",
+                    fontSize: "16px",
+                    fontWeight: "600",
+                  },
+                  "& .MuiDataGrid-footerContainer": {
+                    backgroundColor: "#0E606C",
+                  },
+                  "& .MuiDataGrid-toolbarContainer": {
+                    "& .MuiButton-text": {
+                      fontSize: "18px !important",
+                      color: "green",
+                    },
+                  },
+                }}
+              />
+            </Box>
+          </div>
         </div>
       </div>
     </div>
