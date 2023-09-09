@@ -14,50 +14,62 @@ const data = [
   {
     name: "Jan",
     sales: 4000,
+    sale1: 4100,
   },
   {
     name: "Feb",
     sales: 3000,
+    sale1: 3400,
   },
   {
     name: "Mar",
     sales: 200,
+    sale1: 2000,
   },
   {
     name: "Apr",
     sales: 1200,
+    sale1: 2100,
   },
   {
     name: "May",
     sales: 1890,
+    sale1: 2300,
   },
   {
     name: "Jun",
     sales: 2390,
+    sale1: 2500,
   },
   {
     name: "Jul",
     sales: 3490,
+    sale1: 2789,
   },
   {
     name: "Aug",
     sales: 2490,
+    sale1: 2570,
   },
   {
     name: "Sep",
     sales: 3090,
+    sale1: 2360,
   },
   {
     name: "oct",
     sales: 0,
+    sale1: 4687,
   },
   {
     name: "Nov",
+    sale1: 4300,
     sales: 0,
   },
   {
     name: "Dec",
     sales: 0,
+    sale1: 3132,
   },
 ];
 
@@ -99,7 +111,14 @@ function DemandMonthChart() {
           {
             <Bar dataKey="sales">
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={getColor(entry.sales)} />
+                <Cell key={`cell-${index}`} fill="#9BDAE3" />
+              ))}
+            </Bar>
+          }
+          {
+            <Bar dataKey="sale1">
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill="#B38383" />
               ))}
             </Bar>
           }
@@ -116,7 +135,7 @@ function DemandMonthChart() {
           <div className="flex items-center gap-2">
             <div
               className="w-3 h-3 -700 rounded-full"
-              style={{ backgroundColor: "#EC5959" }}
+              style={{ backgroundColor: "#B38383" }}
             />
             <div>High</div>
           </div>
@@ -124,29 +143,16 @@ function DemandMonthChart() {
         </div>
         <div
           className="high flex flex-col  items-center"
-          style={{ color: "#236e37" }}
+          style={{ color: "#84B6BD" }}
         >
           <div className="flex items-center gap-2">
             <div
               className="w-3 h-3 -700 rounded-full"
-              style={{ backgroundColor: "#1BDF83" }}
+              style={{ backgroundColor: "#9BDAE3" }}
             />
             <div>Medium</div>
           </div>
           <div> {">1000"}</div>
-        </div>
-        <div
-          className="high flex flex-col  items-center"
-          style={{ color: "#646e23" }}
-        >
-          <div className="flex items-center gap-2">
-            <div
-              className="w-3 h-3 -700 rounded-full"
-              style={{ backgroundColor: "#FFEA2B" }}
-            />
-            <div>Low</div>
-          </div>
-          <div> {"<1000"}</div>
         </div>
       </div>
     </div>

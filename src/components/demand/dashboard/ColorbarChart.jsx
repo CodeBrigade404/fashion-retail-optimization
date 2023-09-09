@@ -11,8 +11,8 @@ const barColors = [
 
 function ColorBarChart(props) {
   return (
-    <div className="barChartBox">
-      <h1 className="mb-5 text-3xl font-bold " style={{ color: "#494FBF" }}>
+    <div className="barChartBox font-tinos">
+      <h1 className="mb-5 text-3xl font-bold " style={{ color: "#000" }}>
         Colors Demand
       </h1>
       <div className="chart">

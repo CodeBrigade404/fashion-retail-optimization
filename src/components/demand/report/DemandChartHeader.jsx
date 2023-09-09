@@ -1,14 +1,11 @@
 function DemandChartHeader() {
   return (
-    <div className="demandChartHeader flex justify-between gap-10 p-8 pb-0">
+    <div className="demandChartHeader flex justify-between gap-10 p-8 pb-0 font-tinos">
       <div className="demandDetails w-full flex flex-col">
-        <h1 className=" text-[35px] font-bold " style={{ color: "#494FBF" }}>
+        <h1 className=" text-[35px] font-bold  " style={{ color: "#000" }}>
           Monthly Demand
         </h1>
-        <div
-          className="productDetails flex justify-between gap-14 font-bold mt-7"
-          style={{ fontFamily: "roboto" }}
-        >
+        <div className="productDetails flex justify-between gap-14 font-bold mt-7">
           <div className="flex flex-col w-full">
             <span className="text-gray-500">ID - WS-003</span>
             <span className="text-xl"> Women's Long Sleeve Tops</span>

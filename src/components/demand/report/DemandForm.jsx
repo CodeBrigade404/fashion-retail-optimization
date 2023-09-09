@@ -2,8 +2,8 @@ import Checkbox from "@mui/material/Checkbox";
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 function DemandForm() {
   return (
-    <div className="demandFormBox p-5 flex flex-col justify-between gap-5">
-      <h1 className=" text-[35px] font-bold " style={{ color: "#494FBF" }}>
+    <div className="demandFormBox p-5 flex flex-col justify-between gap-5 font-tinos">
+      <h1 className=" text-[35px] font-bold " style={{ color: "#000" }}>
         Manage Product
       </h1>
       <div
@@ -130,7 +130,7 @@ function DemandForm() {
         >
           <button
             className="py-[10px] bg-blue-500 w-[80%] rounded-md text-white"
-            style={{ backgroundColor: "#EC5959" }}
+            style={{ backgroundColor: "#E77E7E" }}
           >
             PDF
           </button>
