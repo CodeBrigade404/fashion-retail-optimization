@@ -48,7 +48,7 @@ function ItemDetails({ isVisible, onClose }) {
 			<div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
 			<div className="w-[1000px] flex flex-col relative">
 				<div className="flex justify-end">
-					<button className="text-white text-2xl" onClick={handleClose}>
+					<button className="text-white text-3xl" onClick={handleClose}>
 						X
 					</button>
 				</div>
@@ -59,26 +59,29 @@ function ItemDetails({ isVisible, onClose }) {
 					{/* Buttons on the left */}
 					<div className="fixed left-12 top-1/4 transform -translate-y-1/4 flex flex-col space-y-3">
 						<button
-							className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+							className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded-full"
 							onClick={scrollToDetails}>
 							Item Details
 						</button>
 
 						<button
-							className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+							className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded-full"
 							onClick={scrollToNetProfit}>
 							Net Profit
 						</button>
 
 						<button
-							className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+							className="bg-black hover:bg-black text-white font-bold py-2 px-4 rounded-full"
 							onClick={scrollToGrossProfit}>
 							Gross Profit
 						</button>
 					</div>
 
 					{/* Product and Material Details */}
-					<div className="grid grid-cols-1 gap-2 " ref={detailsSectionRef}>
+
+					<div
+						className="grid grid-cols-1 gap-2 border border-gray-300 "
+						ref={detailsSectionRef}>
 						<div className="tile">
 							<h1 className="text-2xl font-semibold mb-4">
 								Item Serial Number: {productDetails.serialNumber}
@@ -122,7 +125,7 @@ function ItemDetails({ isVisible, onClose }) {
 
 					{/* Charts */}
 					<div
-						className="grid grid-cols-1 gap-6 mt-6"
+						className="grid grid-cols-1 gap-6 mt-6 border border-gray-300"
 						ref={netProfitSectionRef}>
 						<div className="bg-white rounded-lg p-6 text-center shadow-md">
 							<LineChartNetProfit />
@@ -131,7 +134,7 @@ function ItemDetails({ isVisible, onClose }) {
 
 					{/* Gross Profit Chart */}
 					<div
-						className="grid grid-cols-1 gap-6 mt-6"
+						className="grid grid-cols-1 gap-6 mt-6 border border-gray-300"
 						ref={grossProfitSectionRef}>
 						<div className="bg-white rounded-lg p-6 text-center shadow-md">
 							<LineChartGrossProfit />
