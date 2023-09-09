@@ -1,7 +1,6 @@
-import { useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import StockDashBoard from "../../components/stock/StockDashBoard";
 import CreateStocks from "../../components/stock/forms/CreateStocks";
-import Box from "@mui/material/Box";
 import StockTable from "../../components/stock/tables/StockTable";
 import NavTabs from "../../components/stock/nav/NavTabs";
 
@@ -10,21 +9,17 @@ const Stock = () => {
   const createStocksRef = useRef(null);
   const stocksTableRef = useRef(null);
 
-  // const handleButtonClick = (ref) => {
-  //   ref.current.scrollIntoView({ behavior: "smooth" });
-  // };
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const [activeButton, setActiveButton] = useState(1);
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-    switch (tab) {
-      case "dashboard":
+  const handleTabChange = () => {
+    switch (activeButton) {
+      case 1:
         dashboardRef.current.scrollIntoView({ behavior: "smooth" });
         break;
-      case "createStocks":
+      case 2:
         createStocksRef.current.scrollIntoView({ behavior: "smooth" });
         break;
-      case "stocksTable":
+      case 3:
         stocksTableRef.current.scrollIntoView({ behavior: "smooth" });
         break;
       default:
@@ -32,38 +27,21 @@ const Stock = () => {
     }
   };
 
-  return (
-    <div className="demand overflow-hidden">
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          "& > *": {
-            m: 1,
-          },
-        }}
-      >
-        <NavTabs activeTab={activeTab} onChange={handleTabChange} />
-        {/* <ButtonGroup variant="text" aria-label="text button group">
-          <Button onClick={() => handleButtonClick(dashboardRef)}>One</Button>
-          <Button onClick={() => handleButtonClick(createStocksRef)}>
-            Two
-          </Button>
-          <Button onClick={() => handleButtonClick(stocksTableRef)}>
-            Three
-          </Button>
-        </ButtonGroup> */}
-      </Box>
+  useEffect(() => {
+    handleTabChange();
+  }, [activeButton]);
 
+  return (
+    <div className="w-full  flex flex-col">
+      <NavTabs activeButton={activeButton} setActiveButton={setActiveButton} />
       <div className="downBox h-[3600px] ">
-        <div ref={dashboardRef}>
+        <div className=" pt-20" ref={dashboardRef}>
           <StockDashBoard />
         </div>
-        <div ref={createStocksRef}>
+        <div className=" pt-20" ref={createStocksRef}>
           <CreateStocks />
         </div>
-        <div ref={stocksTableRef}>
+        <div className=" pt-20" ref={stocksTableRef}>
           <StockTable />
         </div>
       </div>
