@@ -41,7 +41,7 @@ function Nav({ activeButton, setActiveButton }) {
             activate(3);
           }}
         >
-          List
+          Stock
         </button>
       </div>
     </div>

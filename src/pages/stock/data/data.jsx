@@ -37,7 +37,7 @@ export const stockForWomenTotalQuantity = {
   title: "Women's Quantity",
   number: "118,626,504",
   dataKey: "stock",
-  percentage: 46,
+  percentage: 78,
   chartData: [
     { name: "January", stock: 1600 },
     { name: "February", stock: 1800 },
@@ -54,7 +54,7 @@ export const stockForBabyTotalQuantity = {
   title: "Baby's Quantity",
   number: "450210",
   dataKey: "stock",
-  percentage: 46,
+  percentage: 36,
   chartData: [
     { name: "January", stock: 1500 },
     { name: "February", stock: 1600 },
@@ -190,6 +190,7 @@ export const barChartBoxVisit = {
   ],
 };
 
+export const menClothingTitle = "Current Men's Stock Availability";
 export const menClothingData = [
   {
     category: "T-shirts",
@@ -216,6 +217,8 @@ export const menClothingData = [
     availableStock: 60,
   },
 ];
+
+export const womenClothingTitle = "Current Women's Stock Availability";
 
 export const womenClothingData = [
   {

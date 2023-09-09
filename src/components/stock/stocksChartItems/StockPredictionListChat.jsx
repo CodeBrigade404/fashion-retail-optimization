@@ -1,4 +1,3 @@
-import { PureComponent } from "react";
 import {
   LineChart,
   Line,
@@ -73,10 +72,13 @@ const data = [
   },
 ];
 
-export default class StockChart extends PureComponent {
-  render() {
-    return (
-      <ResponsiveContainer width="100%" height="100%">
+const StockChart = () => {
+  return (
+    <div className=" w-full ">
+      <h2 className="font-tinos text-center mb-6 text-left text-md">
+        Annual Stored Stock Availability
+      </h2>
+      <ResponsiveContainer width="100%" height={347}>
         <LineChart
           width={500}
           height={300}
@@ -106,14 +108,10 @@ export default class StockChart extends PureComponent {
             name="Baby's"
             stroke="#ff7300"
           />
-          <Line
-            type="monotone"
-            dataKey="unisex"
-            name="Unisex"
-            stroke="#ff0000"
-          />
         </LineChart>
       </ResponsiveContainer>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default StockChart;
