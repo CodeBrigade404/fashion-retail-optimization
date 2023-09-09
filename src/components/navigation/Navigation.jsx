@@ -22,7 +22,7 @@ function Navigation() {
       </div>
       <div className="flex flex-col h-[80%] ">
         <NavLink
-          className={`  transition-colors rounded-xl duration-1000 ease-out flex h-[17%] place-content-center ${
+          className={`  transition-colors rounded-xl duration-1000 ease-linear flex h-[17%] place-content-center ${
             isNavLinkActive("/") ? "bg-[#000000]" : ""
           }`}
           to={"/"}
@@ -40,7 +40,7 @@ function Navigation() {
         </NavLink>
 
         <NavLink
-          className={` transition-colors rounded-xl duration-1000 ease-out flex h-[17%] place-content-center ${
+          className={` transition-colors rounded-xl duration-1000 ease-linear flex h-[17%] place-content-center ${
             isNavLinkActive("/demand") ? "bg-[#000000]" : ""
           }`}
           to={"/demand"}
@@ -58,7 +58,7 @@ function Navigation() {
         </NavLink>
 
         <NavLink
-          className={`transition-colors rounded-xl duration-1000 ease-out  flex h-[17%] place-content-center ${
+          className={`transition-colors rounded-xl duration-1000 ease-linear flex h-[17%] place-content-center ${
             isNavLinkActive("/profit") ? "bg-[#000000]" : ""
           }`}
           to={"/profit"}
@@ -76,7 +76,7 @@ function Navigation() {
         </NavLink>
 
         <NavLink
-          className={` transition-colors rounded-xl duration-1000ease-out flex h-[17%] place-content-center ${
+          className={` transition-colors rounded-xl duration-1000 ease-linear flex h-[17%] place-content-center ${
             isNavLinkActive("/manufacturer") ? "bg-[#000000]" : ""
           }`}
           to={"/manufacturer"}
@@ -94,7 +94,7 @@ function Navigation() {
         </NavLink>
 
         <NavLink
-          className={` transition-colors rounded-xl duration-1000 ease-out flex h-[17%] place-content-center  ${
+          className={` transition-colors rounded-xl duration-1000 ease-linear flex h-[17%] place-content-center  ${
             isNavLinkActive("/stock") ? "bg-[#000000]" : ""
           }`}
           to={"/stock"}
