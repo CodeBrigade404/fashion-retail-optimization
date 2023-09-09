@@ -12,52 +12,68 @@ import {
 
 const data = [
   {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    month: "January",
+    mens: 1000,
+    womens: 2080,
+    babys: 1150,
   },
   {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    month: "February",
+    mens: 1110,
+    womens: 2190,
+    babys: 1160,
   },
   {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
+    month: "March",
+    mens: 1120,
+    womens: 1700,
+    babys: 1170,
   },
   {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
+    month: "April",
+    mens: 2120,
+    womens: 2700,
+    babys: 2170,
   },
   {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
+    month: "May",
+    mens: 1120,
+    womens: 1100,
+    babys: 1170,
   },
   {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
+    month: "June",
+    mens: 1520,
+    womens: 1100,
+    babys: 1170,
   },
   {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    month: "July",
+    mens: 1290,
+    womens: 1100,
+    babys: 1770,
+  },
+  {
+    month: "August",
+    mens: 1200,
+    womens: 1100,
+    babys: 1750,
+  },
+  {
+    month: "September",
+    mens: 1120,
+    womens: 1100,
+    babys: 1570,
+  },
+  {
+    month: "October",
+    mens: 1120,
+    womens: 1100,
+    babys: 1170,
   },
 ];
 
 export default class StockChart extends PureComponent {
-  static demoUrl = "https://codesandbox.io/s/simple-line-chart-kec3v";
-
   render() {
     return (
       <ResponsiveContainer width="100%" height="100%">
@@ -73,17 +89,29 @@ export default class StockChart extends PureComponent {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="month" />
           <YAxis />
           <Tooltip />
           <Legend />
+          <Line type="monotone" dataKey="mens" name="Men's" stroke="#8884d8" />
           <Line
             type="monotone"
-            dataKey="pv"
-            stroke="#8884d8"
-            activeDot={{ r: 8 }}
+            dataKey="womens"
+            name="Women's"
+            stroke="#82ca9d"
           />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          <Line
+            type="monotone"
+            dataKey="babys"
+            name="Baby's"
+            stroke="#ff7300"
+          />
+          <Line
+            type="monotone"
+            dataKey="unisex"
+            name="Unisex"
+            stroke="#ff0000"
+          />
         </LineChart>
       </ResponsiveContainer>
     );

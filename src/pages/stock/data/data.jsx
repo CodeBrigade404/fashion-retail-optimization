@@ -189,3 +189,57 @@ export const barChartBoxVisit = {
     },
   ],
 };
+
+export const menClothingData = [
+  {
+    category: "T-shirts",
+    availableStock: 220,
+  },
+  {
+    category: "Shirts",
+    availableStock: 170,
+  },
+  {
+    category: "Shorts",
+    availableStock: 136,
+  },
+  {
+    category: "Trousers",
+    availableStock: 190,
+  },
+  {
+    category: "Shoes",
+    availableStock: 175,
+  },
+  {
+    category: "Jackets",
+    availableStock: 60,
+  },
+];
+
+export const womenClothingData = [
+  {
+    category: "Dresses",
+    availableStock: 150,
+  },
+  {
+    category: "Skirts",
+    availableStock: 120,
+  },
+  {
+    category: "Blouses",
+    availableStock: 180,
+  },
+  {
+    category: "Pants",
+    availableStock: 130,
+  },
+  {
+    category: "Shoes",
+    availableStock: 100,
+  },
+  {
+    category: "Coats",
+    availableStock: 80,
+  },
+];

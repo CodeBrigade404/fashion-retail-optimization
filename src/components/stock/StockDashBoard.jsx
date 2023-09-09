@@ -3,6 +3,8 @@ import {
   stockForMensTotalQuantity,
   stockForWomenTotalQuantity,
   stockForBabyTotalQuantity,
+  menClothingData,
+  womenClothingData,
 } from "../../pages/stock/data/data";
 import StockAnalyzedCard from "./stocksChartItems/StockCards";
 import StockChart from "./stocksChartItems/StockPredictionListChat";
@@ -47,9 +49,15 @@ function StockDashBoard() {
         </div>
         <div
           className="box3"
-          style={{ ...boxStyle, gridColumn: "span 2", gridRow: "span 2" }}
+          style={{ ...boxStyle, gridColumn: "span 1", gridRow: "span 2" }}
         >
-          <StockTrend />
+          <StockTrend data={menClothingData} />
+        </div>
+        <div
+          className="box3"
+          style={{ ...boxStyle, gridColumn: "span 1", gridRow: "span 2" }}
+        >
+          <StockTrend data={womenClothingData} />
         </div>
       </div>
     </div>
