@@ -61,7 +61,7 @@ const LineChartGrossProfit = () => {
 				Net Profit
 			</h1>
 			<div className="menWomenChart w-full h-full mt-10">
-				<ResponsiveContainer width="100%" height={300}>
+				<ResponsiveContainer width="100%" height={500}>
 					<LineChart
 						width={500}
 						height={300}
