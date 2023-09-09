@@ -5,11 +5,12 @@ import Profit from "./pages/profit/Profit";
 import Manufacturer from "./pages/manufacturer/Manufacturer";
 import Stock from "./pages/stock/Stock";
 import Navigation from "./components/navigation/Navigation";
+
 function App() {
   return (
     <>
       <Navigation />
-      <div className="ml-32 ">
+      <div className="ml-32">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/demand" element={<Demand />} />
