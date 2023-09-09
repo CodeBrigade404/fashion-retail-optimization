@@ -5,7 +5,10 @@ function Nav({ activeButton, setActiveButton }) {
     setActiveButton(prop);
   };
   return (
-    <div className=" backdrop-blur-sm fixed pr-28 text-2xl w-full h-20 flex font-tinos items-center justify-between">
+    <div
+      style={{ zIndex: 999 }}
+      className=" backdrop-blur-sm fixed pr-28 text-2xl w-full h-20 flex font-tinos items-center justify-between"
+    >
       <h1 className=" h-fit ml-10 ">Manufacturer Analysis</h1>
       <div className=" mr-10 p-2  flex ">
         <button
