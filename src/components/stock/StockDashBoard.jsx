@@ -1,10 +1,14 @@
 import {
-  chartBoxProduct,
-  stockForTotalQuantity,
+  stockForUnisexQuantity,
+  stockForMensTotalQuantity,
+  stockForWomenTotalQuantity,
+  stockForBabyTotalQuantity,
+  menClothingData,
+  womenClothingData,
 } from "../../pages/stock/data/data";
 import StockAnalyzedCard from "./stocksChartItems/StockCards";
 import StockChart from "./stocksChartItems/StockPredictionListChat";
-import StockTrend from "./stocksChartItems/StockTrend"
+import StockTrend from "./stocksChartItems/StockTrend";
 
 function StockDashBoard() {
   const boxStyle = {
@@ -26,16 +30,16 @@ function StockDashBoard() {
         }}
       >
         <div className="box2" style={boxStyle}>
-          <StockAnalyzedCard {...stockForTotalQuantity} />
+          <StockAnalyzedCard {...stockForUnisexQuantity} />
         </div>
         <div className="box3" style={boxStyle}>
-          <StockAnalyzedCard {...chartBoxProduct} />
+          <StockAnalyzedCard {...stockForMensTotalQuantity} />
         </div>
         <div className="box2" style={boxStyle}>
-          <StockAnalyzedCard {...stockForTotalQuantity} />
+          <StockAnalyzedCard {...stockForWomenTotalQuantity} />
         </div>
         <div className="box3" style={boxStyle}>
-          <StockAnalyzedCard {...chartBoxProduct} />
+          <StockAnalyzedCard {...stockForBabyTotalQuantity} />
         </div>
         <div
           className="box3"
@@ -45,9 +49,15 @@ function StockDashBoard() {
         </div>
         <div
           className="box3"
-          style={{ ...boxStyle, gridColumn: "span 2", gridRow: "span 2" }}
+          style={{ ...boxStyle, gridColumn: "span 1", gridRow: "span 2" }}
         >
-          <StockTrend />
+          <StockTrend data={menClothingData} />
+        </div>
+        <div
+          className="box3"
+          style={{ ...boxStyle, gridColumn: "span 1", gridRow: "span 2" }}
+        >
+          <StockTrend data={womenClothingData} />
         </div>
       </div>
     </div>
