@@ -2,9 +2,13 @@ import { topDealProducts } from "../../../pages/demand/data/data";
 
 function TopBox() {
   return (
-    <div className="topBox" style={{ fontFamily: "Inter" }}>
-      <h1 className="mb-5 text-3xl font-bold " style={{ color: "#494FBF" }}>
-        7 Top Products
+    <div className="topBox font-tinos">
+      <h1
+        className="mb-5 text-2xl font-extrabold
+       "
+        style={{ color: "#000" }}
+      >
+        Top Demanding Products
       </h1>
       <div className="list">
         {topDealProducts.map((user) => (
@@ -21,7 +25,7 @@ function TopBox() {
                 <span className="text-xs text-gray-500">{user.email}</span>
               </div>
             </div>
-            <span className="font-bold" style={{ color: "#EC5959" }}>
+            <span className="font-bold" style={{ color: "#000" }}>
               {user.amount}
             </span>
           </div>

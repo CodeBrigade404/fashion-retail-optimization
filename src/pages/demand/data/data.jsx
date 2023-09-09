@@ -54,7 +54,7 @@ export const topDealProducts = [
 
 //want women
 export const chartBoxUser = {
-  color: "#8884d8",
+  color: "#872323",
   icon: "https://img.icons8.com/ios/50/standing-woman.png",
   title: "Women",
   number: "111238",
@@ -73,7 +73,7 @@ export const chartBoxUser = {
 
 //want men
 export const chartBoxProduct = {
-  color: "skyblue",
+  color: "#453AC8",
   icon: "https://img.icons8.com/ios/50/men-age-group-4.png",
   title: "Men",
   number: "23888",
@@ -92,7 +92,7 @@ export const chartBoxProduct = {
 
 //want shoe
 export const chartBoxRevenue = {
-  color: "teal",
+  color: "#1c2866",
   icon: "https://img.icons8.com/windows/32/boots.png",
   title: "Shoe",
   number: "56432",
@@ -111,7 +111,7 @@ export const chartBoxRevenue = {
 
 //want other
 export const chartBoxConversion = {
-  color: "gold",
+  color: "#9fab2e",
   icon: "https://img.icons8.com/fluency-systems-regular/48/tie.png",
   title: "Other",
   number: "2600",
@@ -143,7 +143,7 @@ export const barChartBoxRevenue = {
     },
     {
       name: "Tue",
-      profit: 2000,
+      profit: 3100,
     },
     {
       name: "Wed",

@@ -3,13 +3,13 @@ import React from "react";
 function DemandTypeCard(props) {
   var color = "";
   if (props.type === "High") {
-    color = "#EC5959"; // Use your custom color here
+    color = "#E77E7E"; // Use your custom color here
   }
   if (props.type === "Medium") {
-    color = "#1BDF83"; // Use your custom color here
+    color = "#83DBB1"; // Use your custom color here
   }
   if (props.type === "Low") {
-    color = "#FFEA2B"; // Use your custom color here
+    color = "#DECE3B"; // Use your custom color here
   }
   return (
     <div

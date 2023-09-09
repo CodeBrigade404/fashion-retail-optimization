@@ -34,7 +34,7 @@ function Demand() {
   }, [activeButton]);
 
   return (
-    <div className="demand overflow-hidden  ">
+    <div className="demand overflow-hidden  " ref={page1}>
       <div className="upBox flex  mt-11 mb-8 items-center  ">
         <DemandNav
           activeButton={activeButton}
@@ -42,7 +42,7 @@ function Demand() {
         />
       </div>
       <div className="downBox ">
-        <div ref={page1}>
+        <div>
           <DashBoard />
         </div>
         <div ref={page2}>

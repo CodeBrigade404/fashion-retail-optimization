@@ -285,8 +285,8 @@ function DemandProductTable() {
     >
       <div className="mt-[90px] bg-white ">
         <h1
-          className="mt-2 ml-4 text-[35px] font-bold "
-          style={{ color: "#494FBF" }}
+          className="mt-2 ml-4 text-[35px] font-bold font-tinos"
+          style={{ color: "#000" }}
         >
           Product Table
         </h1>
@@ -302,7 +302,7 @@ function DemandProductTable() {
               <DataGrid
                 rows={rows}
                 columns={columns}
-                rowHeight={80}
+                rowHeight={70}
                 initialState={{
                   pagination: {
                     paginationModel: {
@@ -318,10 +318,10 @@ function DemandProductTable() {
                 sx={{
                   // border: 3,
                   "& .MuiDataGrid-columnHeaders": {
-                    backgroundColor: "#0E606C",
-                    color: "#fff",
+                    backgroundColor: "#fff",
+                    color: "#000",
                     fontFamily: "Inter",
-                    fontSize: "16px",
+                    fontSize: "15px",
                     fontWeight: "bold",
 
                     // borderBottom: "6px red solid",
@@ -330,16 +330,16 @@ function DemandProductTable() {
                     backgroundColor: "#fff",
                     color: "#2B2B2B",
                     fontFamily: "Inter",
-                    fontSize: "16px",
+                    fontSize: "14px",
                     fontWeight: "600",
                   },
                   "& .MuiDataGrid-footerContainer": {
-                    backgroundColor: "#0E606C",
+                    backgroundColor: "#fff",
                   },
                   "& .MuiDataGrid-toolbarContainer": {
                     "& .MuiButton-text": {
-                      fontSize: "18px !important",
-                      color: "green",
+                      fontSize: "16px !important",
+                      color: "#636363",
                     },
                   },
                 }}
