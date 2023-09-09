@@ -58,7 +58,7 @@ const data = [
 function Barchart() {
 	return (
 		<div className="netProfit">
-			<h1 className="mb-5 text-3xl font-bold ">Net Profit</h1>
+			<h2 className="text-left  ml-4 font-tinos text-2xl">Gross Profit</h2>
 			<div className="netProfit">
 				<ResponsiveContainer width={550} height={200}>
 					<BarChart data={data}>
@@ -67,8 +67,8 @@ function Barchart() {
 						<YAxis />
 						<Tooltip />
 						<Legend />
-						<Bar dataKey="PreviousYear" fill="#EC5959" />
-						<Bar dataKey="PresentYear" fill="#16BFD6" />
+						<Bar dataKey="PreviousYear" fill="#cbd5e1" />
+						<Bar dataKey="PresentYear" fill="#64748b" />
 					</BarChart>
 				</ResponsiveContainer>
 			</div>
