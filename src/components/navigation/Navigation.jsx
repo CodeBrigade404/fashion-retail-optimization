@@ -7,7 +7,7 @@ function Navigation() {
   };
 
   return (
-    <nav className="rounded-lg bg-white rounded-xl   my-2 mx-4 justify-between  h-[95%] fixed  drop-shadow-lg w-28 flex flex-col  ">
+    <nav className="rounded-lg bg-white rounded-xl   my-[4%] mx-4 justify-between  h-[95%] fixed  drop-shadow-lg w-28 flex flex-col  ">
       <svg
         className="mt-8 "
         xmlns="http://www.w3.org/2000/svg"
