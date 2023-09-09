@@ -3,13 +3,9 @@ import { topDealProducts } from "../../../pages/demand/data/data";
 function TopBox() {
   return (
     <div className="topBox font-tinos">
-      <h1
-        className="mb-5 text-2xl font-extrabold
-       "
-        style={{ color: "#000" }}
-      >
+      <h2 className="font-tinos mb-6 text-left text-lg">
         Top Demanding Products
-      </h1>
+      </h2>
       <div className="list">
         {topDealProducts.map((user) => (
           <div className="flex items-center justify-between mb-7" key={user.id}>
