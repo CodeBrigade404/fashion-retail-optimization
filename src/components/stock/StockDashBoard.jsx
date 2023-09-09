@@ -1,5 +1,8 @@
-import { chartBoxProduct, chartBoxUser } from "../../pages/stock/data/data";
-import LineChartBox from "./stocksChartItems/StockCards";
+import {
+  chartBoxProduct,
+  stockForTotalQuantity,
+} from "../../pages/stock/data/data";
+import StockAnalyzedCard from "./stocksChartItems/StockCards";
 import StockChart from "./stocksChartItems/StockPredictionListChat";
 import StockTrend from "./stocksChartItems/StockTrend"
 
@@ -23,16 +26,16 @@ function StockDashBoard() {
         }}
       >
         <div className="box2" style={boxStyle}>
-          <LineChartBox {...chartBoxUser} />
+          <StockAnalyzedCard {...stockForTotalQuantity} />
         </div>
         <div className="box3" style={boxStyle}>
-          <LineChartBox {...chartBoxProduct} />
+          <StockAnalyzedCard {...chartBoxProduct} />
         </div>
         <div className="box2" style={boxStyle}>
-          <LineChartBox {...chartBoxUser} />
+          <StockAnalyzedCard {...stockForTotalQuantity} />
         </div>
         <div className="box3" style={boxStyle}>
-          <LineChartBox {...chartBoxProduct} />
+          <StockAnalyzedCard {...chartBoxProduct} />
         </div>
         <div
           className="box3"

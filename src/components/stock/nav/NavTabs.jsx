@@ -1,37 +1,56 @@
 import PropTypes from "prop-types";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 
-function NavTabs({ activeTab, onChange }) {
+function Nav({ activeButton, setActiveButton }) {
+  const activate = (prop) => {
+    setActiveButton(prop);
+  };
   return (
-    <div>
-      <ButtonGroup variant="text" aria-label="text button group">
-        <Button
-          onClick={() => onChange("dashboard")}
-          variant={activeTab === "dashboard" ? "contained" : "outlined"}
+    <div className=" fixed pr-28 text-2xl w-full h-20 flex font-tinos items-center justify-between">
+      <h1 className=" h-fit ml-10 ">Manufacturer Analysis</h1>
+      <div className=" mr-10 p-2  flex ">
+        <button
+          className={`ml-8 text-xl drop-shadow-md bg-white py-2 px-8 transition-all duration-700 ease-linear rounded-md  ${
+            activeButton === 1 ? "text-gray-800" : "text-gray-400"
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            activate(1);
+          }}
         >
-          One
-        </Button>
-        <Button
-          onClick={() => onChange("createStocks")}
-          variant={activeTab === "createStocks" ? "contained" : "outlined"}
+          button1
+        </button>
+
+        <button
+          className={`ml-8 text-xl drop-shadow-md bg-white py-2 px-8 transition-all duration-700 ease-linear rounded-md  ${
+            activeButton === 2 ? "text-gray-800" : "text-gray-400"
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            activate(2);
+          }}
         >
-          Two
-        </Button>
-        <Button
-          onClick={() => onChange("stocksTable")}
-          variant={activeTab === "stocksTable" ? "contained" : "outlined"}
+          button2
+        </button>
+
+        <button
+          className={`ml-8 text-xl drop-shadow-md bg-white py-2 px-8 transition-all duration-700 ease-linear  rounded-md  ${
+            activeButton === 3 ? "text-gray-800" : "text-gray-400"
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            activate(3);
+          }}
         >
-          Three
-        </Button>
-      </ButtonGroup>
+          button3
+        </button>
+      </div>
     </div>
   );
 }
 
-NavTabs.propTypes = {
-  activeTab: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+Nav.propTypes = {
+  activeButton: PropTypes.string.isRequired,
+  setActiveButton: PropTypes.func.isRequired,
 };
 
-export default NavTabs;
+export default Nav;
