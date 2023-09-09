@@ -3,9 +3,7 @@ import { FaRegCalendarMinus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Barchart from "../../components/profit/BarchartGrossProfit";
 import BarchartNetProfit from "../../components/profit/BarchartNetProfit";
-import ProductTable from "../../components/profit/ProductTable";
-import LineChartProfit from "../../components/profit/LineChartGrossProfit";
-import LineChartNetProfit from "../../components/profit/LineChartNetProfit";
+import ProductTable from "../../components/profit/ProfitProductTable";
 
 const Profit = () => {
 	const boxStyle = {
@@ -41,7 +39,7 @@ const Profit = () => {
 							<div className="bg-white rounded-lg p-6 text-center shadow-md">
 								<h2 className="font-tinos">Profit Prediction (Monthly)</h2>
 								<h1 className="text-2xl font-bold">Rs. 100,000</h1>
-								<FaRegCalendarMinus className="title flex items-center gap-[10px]" />
+								{/* <FaRegCalendarMinus className="title flex items-center gap-[10px]" /> */}
 							</div>
 
 							{/* Card 2: No. of Products */}
@@ -59,37 +57,28 @@ const Profit = () => {
 
 						<div className="flex mt-5 gap-4">
 							{/* Chart 1 */}
-							<div className="w-1/4 bg-white rounded-lg p-6 text-center shadow-md">
+							<div className="w-2/4 bg-white rounded-lg p-6 text-center shadow-md">
 								<Barchart />
 							</div>
 
 							{/* Chart 2 */}
-							<div className="w-1/4 bg-white rounded-lg p-6 text-center shadow-md">
+							<div className="w-2/4 bg-white rounded-lg p-6 text-center shadow-md">
 								<BarchartNetProfit />
 							</div>
 
 							{/* Table */}
-							<div
-								className="w-1/2 bg-white rounded-lg shadow-lg p-4"
-								style={{ zIndex: 1 }}>
-								<h3
-									className="mb-5 text-3xl font-bold text-center"
-									style={{ color: "#494FBF" }}>
-									Product Table
-								</h3>
-
-								<div className="container mx-auto mt-4 p-2 border border-gray-300 rounded-lg max-h-[250px] overflow-y-auto">
-									<ProductTable />
-								</div>
-							</div>
 						</div>
 
 						<div className="flex mt-5 gap-4">
-							<div className="w-2/4 bg-white rounded-lg p-6 text-center shadow-md">
-								<LineChartProfit />
-							</div>
-							<div className="w-2/4 bg-white rounded-lg p-6 text-center shadow-md">
-								<LineChartNetProfit />
+							<div
+								className="w-full bg-white rounded-lg shadow-lg p-4"
+								style={{ zIndex: 1 }}>
+								<h3 className="mb-5 text-3xl font-bold text-center">
+									Profit-Product Table
+								</h3>
+								<div className="container mx-auto mt-4 p-2 border border-gray-300 rounded-lg max-h-[680px]">
+									<ProductTable />
+								</div>
 							</div>
 						</div>
 					</div>
