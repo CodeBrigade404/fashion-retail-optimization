@@ -32,7 +32,7 @@ export default function CreateStocks() {
     <form style={{ ...boxStyle }}>
       <div className="space-y-12">
         <div className="pb-12">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">
+          <h2 className="text-lg font-tinos leading-7 text-gray-900">
             <div className="flex">
               <svg
                 className="w-8 h-8 pr-2"

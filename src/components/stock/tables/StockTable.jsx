@@ -187,6 +187,9 @@ function StockTable() {
                 "& .MuiDataGrid-toolbarContainer": {
                   "& .MuiButton-text": {
                     color: "black",
+                    padding: "20px",
+                    marginLeft:"50px",
+                    marginBottom:"10Px"
                   },
                 },
               }}
