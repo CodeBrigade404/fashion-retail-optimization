@@ -6,7 +6,7 @@ function Nav({ activeButton, setActiveButton }) {
   };
   return (
     <div className=" fixed pr-28 text-2xl w-full h-20 flex font-tinos items-center justify-between backdrop-blur-sm">
-      <h1 className=" h-fit ml-10 ">Manufacturer Analysis</h1>
+      <h1 className=" h-fit ml-10 ">Stock Analysis</h1>
       <div className=" mr-10 p-2  flex ">
         <button
           className={`ml-8 z-10 text-xl bg-white py-2 px-8 transition-all duration-700 ease-linear rounded-md  ${
@@ -17,7 +17,7 @@ function Nav({ activeButton, setActiveButton }) {
             activate(1);
           }}
         >
-          button1
+          Dashboard
         </button>
 
         <button
@@ -29,7 +29,7 @@ function Nav({ activeButton, setActiveButton }) {
             activate(2);
           }}
         >
-          button2
+          Store
         </button>
 
         <button
@@ -41,7 +41,7 @@ function Nav({ activeButton, setActiveButton }) {
             activate(3);
           }}
         >
-          button3
+          List
         </button>
       </div>
     </div>

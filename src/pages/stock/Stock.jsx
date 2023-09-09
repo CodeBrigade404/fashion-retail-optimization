@@ -33,7 +33,15 @@ const Stock = () => {
 
   return (
     <div className="w-full  flex flex-col">
-      <NavTabs activeButton={activeButton} setActiveButton={setActiveButton} />
+      <div
+        className="nav-container"
+        style={{ position: "relative", zIndex: 999 }}
+      >
+        <NavTabs
+          activeButton={activeButton}
+          setActiveButton={setActiveButton}
+        />
+      </div>
       <div className="downBox h-[3600px] ">
         <div className=" pt-20" ref={dashboardRef}>
           <StockDashBoard />
