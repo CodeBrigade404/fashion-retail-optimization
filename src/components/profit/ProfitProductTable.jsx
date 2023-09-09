@@ -9,9 +9,7 @@ import {
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import Box from "@mui/material/Box";
-import ProgressBar from "/Users/lachitha/Desktop/fashion-retail-optimization/src/components/demand/table/ProgressBar.jsx";
-import ImageCard from "/Users/lachitha/Desktop/fashion-retail-optimization/src/components/demand/table/ImageCard.jsx";
-import DemandTypeCard from "/Users/lachitha/Desktop/fashion-retail-optimization/src/components/demand/table/DemandTypeCard.jsx";
+import ImageCard from "../../components/demand/table/ImageCard";
 import React, { Fragment, useState } from "react";
 import ItemDetails from "../../pages/profit/ItemDetails";
 const columns = [
