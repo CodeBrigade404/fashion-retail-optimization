@@ -37,7 +37,7 @@ export const stockForWomenTotalQuantity = {
   title: "Women's Quantity",
   number: "118,626,504",
   dataKey: "stock",
-  percentage: 46,
+  percentage: 78,
   chartData: [
     { name: "January", stock: 1600 },
     { name: "February", stock: 1800 },
@@ -54,7 +54,7 @@ export const stockForBabyTotalQuantity = {
   title: "Baby's Quantity",
   number: "450210",
   dataKey: "stock",
-  percentage: 46,
+  percentage: 26,
   chartData: [
     { name: "January", stock: 1500 },
     { name: "February", stock: 1600 },

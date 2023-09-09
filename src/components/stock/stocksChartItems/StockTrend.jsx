@@ -10,9 +10,9 @@ import PropTypes from "prop-types";
 
 function StockTrend(props) {
   console.log(props.data);
-    const labelStyle = {
-      fontSize: "12px", // Adjust the font size as needed
-    };
+  const labelStyle = {
+    fontSize: "12px",
+  };
 
   return (
     <ResponsiveContainer width="100%" height="100%">
