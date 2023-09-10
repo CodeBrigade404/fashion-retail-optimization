@@ -57,9 +57,12 @@ const data = [
 function AgeBarChart() {
   return (
     <div className="ageBarChart font-tinos">
-      <h1 className="mb-5 text-3xl font-bold " style={{ color: "#000" }}>
+      {/* <h1 className="mb-5 text-3xl font-bold " style={{ color: "#000" }}>
         Age Demand
-      </h1>
+      </h1> */}
+      <h2 className="font-tinos text-center mb-6 text-left text-lg">
+        Age Demand
+      </h2>
       <div className="ageChart">
         <ResponsiveContainer width="100%" height={180}>
           <BarChart data={data}>

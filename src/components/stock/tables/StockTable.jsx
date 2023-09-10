@@ -1,4 +1,7 @@
 import { useState } from "react";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import { rows } from "../tables/data/TableData";
 import {
   DataGrid,
   GridToolbar,
@@ -19,25 +22,6 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-
-const rows = [
-  {
-    id: "PW232",
-    productImage:
-      "https://www.beverlystreet.lk/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/5/5/5586.jpg",
-    item: "Ladies Long Sleeve ",
-    manufacture: "Dolce & Gabbana",
-    quantity: 10,
-  },
-  {
-    id: "MS45",
-    productImage:
-      "https://www.beverlystreet.lk/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/5/5/5594.jpg",
-    item: "Ladies T-Shirt-Grey",
-    manufacture: "Burberry",
-    quantity: 10,
-  },
-];
 
 function CustomPagination() {
   const apiRef = useGridApiContext();
@@ -60,6 +44,9 @@ function CustomPagination() {
 function StockTable() {
   const [selectedRow, setSelectedRow] = useState(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [rowsWithQuantities, setRowsWithQuantities] = useState(
+    rows.map((row) => ({ ...row, quantity: 0 }))
+  );
 
   const columns = [
     {
@@ -97,6 +84,13 @@ function StockTable() {
       headerAlign: "center",
     },
     {
+      field: "price",
+      headerName: "Price",
+      flex: 1,
+      align: "center",
+      headerAlign: "center",
+    },
+    {
       field: "quantity",
       headerName: "Quantity",
       editable: true,
@@ -104,6 +98,23 @@ function StockTable() {
       align: "center",
       headerAlign: "center",
       type: "number",
+      renderCell: (params) => (
+        <div>
+          <IconButton
+            onClick={() => handleDecreaseQuantity(params.row)}
+            disabled={params.row.quantity <= 10}
+          >
+            <RemoveIcon />
+          </IconButton>
+          {params.row.quantity}
+          <IconButton
+            onClick={() => handleIncreaseQuantity(params.row)}
+            disabled={params.row.quantity >= 110}
+          >
+            <AddIcon />
+          </IconButton>
+        </div>
+      ),
     },
     {
       field: "edit",
@@ -134,7 +145,6 @@ function StockTable() {
   ];
 
   const handleDeleteProductItem = (row) => {
-    console.log("Row Deleted");
     console.log(row);
   };
 
@@ -149,76 +159,98 @@ function StockTable() {
 
   const handleSaveChanges = (updatedRow) => {
     console.log(updatedRow);
-    console.log("Updated");
-    // Update the row data in your rows array or send it to your backend
-    // Then close the edit dialog and clear the selectedRow state
     setIsEditDialogOpen(false);
     setSelectedRow(null);
   };
 
+  const handleDecreaseQuantity = (row) => {
+    if (row.quantity > 10) {
+      const updatedRow = { ...row, quantity: row.quantity - 10 };
+      updateRowInArray(updatedRow);
+    }
+  };
+
+  const handleIncreaseQuantity = (row) => {
+    if (row.quantity < 110) {
+      const updatedRow = { ...row, quantity: row.quantity + 10 };
+      updateRowInArray(updatedRow);
+    }
+  };
+
+  const updateRowInArray = (updatedRow) => {
+    const updatedRows = rowsWithQuantities.map((row) =>
+      row.id === updatedRow.id ? updatedRow : row
+    );
+    setRowsWithQuantities(updatedRows);
+  };
+
   return (
     <div className=" h-screen mx-[20px] bg-white rounded-md">
-      <div className=" p-8">
-        <div
-          style={{
-            height: "90vh",
+      <div className="p-8">
+        <Box
+          sx={{
+            height: "calc(100vh - 100px)",
             width: "100%",
-            overflow: "scroll",
+            overflow: "auto",
           }}
         >
-          <Box sx={{ height: "100%", width: "100%" }}>
-            <DataGrid
-              rows={rows}
-              columns={columns}
-              rowHeight={80}
-              initialState={{
-                pagination: {
-                  paginationModel: {
-                    pageSize: 10,
-                  },
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            rowHeight={80}
+            initialState={{
+              pagination: {
+                paginationModel: {
+                  pageSize: 10,
                 },
-              }}
-              slots={{
-                toolbar: GridToolbar,
-                pagination: CustomPagination,
-              }}
-              pageSizeOptions={[10]}
-              sx={{
-                "& .MuiDataGrid-toolbarContainer": {
-                  "& .MuiButton-text": {
-                    color: "black",
-                    padding: "20px",
-                    marginLeft:"50px",
-                    marginBottom:"10Px"
-                  },
+              },
+            }}
+            slots={{
+              toolbar: GridToolbar,
+              pagination: CustomPagination,
+            }}
+            pageSizeOptions={[10]}
+            sx={{
+              "& .MuiDataGrid-toolbarContainer": {
+                "& .MuiButton-text": {
+                  color: "black",
+                  padding: "20px",
+                  marginLeft: "50px",
+                  marginBottom: "10Px",
                 },
-              }}
-            />
-          </Box>
-        </div>
+              },
+            }}
+          />
+        </Box>
       </div>
       {selectedRow && (
         <Dialog open={isEditDialogOpen} onClose={handleEditDialogClose}>
           <DialogTitle>Edit Product</DialogTitle>
           <DialogContent>
             <form>
-              {columns.map((column) => (
-                <TextField
-                  key={column.field}
-                  label={column.headerName}
-                  value={selectedRow[column.field]}
-                  onChange={(e) =>
-                    setSelectedRow({
-                      ...selectedRow,
-                      [column.field]: e.target.value,
-                    })
-                  }
-                  fullWidth
-                  margin="normal"
-                />
-              ))}
+              {columns
+                .filter(
+                  (column) =>
+                    column.field !== "edit" && column.field !== "delete"
+                )
+                .map((column) => (
+                  <TextField
+                    key={column.field}
+                    label={column.headerName}
+                    value={selectedRow[column.field]}
+                    onChange={(e) =>
+                      setSelectedRow({
+                        ...selectedRow,
+                        [column.field]: e.target.value,
+                      })
+                    }
+                    fullWidth
+                    margin="normal"
+                  />
+                ))}
             </form>
           </DialogContent>
+
           <DialogActions>
             <Button onClick={handleEditDialogClose} color="primary">
               Cancel

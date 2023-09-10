@@ -3,9 +3,10 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 function DemandForm() {
   return (
     <div className="demandFormBox p-5 flex flex-col justify-between gap-5 font-tinos">
-      <h1 className=" text-[35px] font-bold " style={{ color: "#000" }}>
+      {/* <h1 className=" text-[35px] font-bold " style={{ color: "#000" }}>
         Manage Product
-      </h1>
+      </h1> */}
+      <h2 className="font-tinos  mb-6 text-left text-lg">Manage Product</h2>
       <div
         className="demandForm"
         style={{

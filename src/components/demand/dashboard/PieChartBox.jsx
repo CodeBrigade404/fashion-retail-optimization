@@ -8,9 +8,12 @@ const data = [
 function PieChartBox() {
   return (
     <div className="pieChartBox h-full flex flex-col justify-center font-tinos">
-      <h1 className="mb-5 text-3xl font-bold " style={{ color: "#000" }}>
+      {/* <h1 className="mb-5 text-3xl font-bold " style={{ color: "#000" }}>
         Demand Comparison
-      </h1>
+      </h1> */}
+      <h2 className="font-tinos  text-left text-lg">
+        Demand Comparison
+      </h2>
       <div className="chart flex items-center justify-center h-full w-full">
         <ResponsiveContainer width="99%" height={300}>
           <PieChart>

@@ -57,9 +57,12 @@ const data = [
 function MenWomenChart() {
   return (
     <div className="menWomenChart w-full h-full font-tinos">
-      <h1 className="mb-5 text-3xl font-bold " style={{ color: "#000" }}>
+      {/* <h1 className="mb-5 text-3xl font-bold " style={{ color: "#000" }}>
         Men vs Women Demand
-      </h1>
+      </h1> */}
+      <h2 className="font-tinos text-center mb-6 text-left text-lg">
+        Men vs Women Demand
+      </h2>
       <div className="menWomenChart w-full h-full mt-10">
         <ResponsiveContainer width="100%" height={360}>
           <LineChart

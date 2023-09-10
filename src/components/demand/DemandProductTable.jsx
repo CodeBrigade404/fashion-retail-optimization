@@ -101,7 +101,7 @@ const rows = [
     demandType: "High",
     lastMonthSales: 2300,
     thisMonthSales: 5679,
-    demandIncrease: 110,
+    demandIncrease: 80,
   },
   {
     id: "MS45",
@@ -145,7 +145,7 @@ const rows = [
     demandType: "Medium",
     lastMonthSales: 2300,
     thisMonthSales: 5600,
-    demandIncrease: 145,
+    demandIncrease: 45,
   },
   {
     id: "WS34",
@@ -157,7 +157,7 @@ const rows = [
     demandType: "High",
     lastMonthSales: 9653,
     thisMonthSales: 13455,
-    demandIncrease: 142,
+    demandIncrease: 42,
   },
   {
     id: "WV34",
@@ -168,7 +168,7 @@ const rows = [
     demandType: "High",
     lastMonthSales: 8343,
     thisMonthSales: 11156,
-    demandIncrease: 109,
+    demandIncrease: 78,
   },
   {
     id: "MS34",
@@ -201,7 +201,7 @@ const rows = [
     demandType: "High",
     lastMonthSales: 23000,
     thisMonthSales: 56760,
-    demandIncrease: 143,
+    demandIncrease: 43,
   },
   {
     id: 11,
@@ -212,7 +212,7 @@ const rows = [
     demandType: "Medium",
     lastMonthSales: 23,
     thisMonthSales: 56,
-    demandIncrease: 150,
+    demandIncrease: 50,
   },
   {
     id: 12,
@@ -245,7 +245,7 @@ const rows = [
     demandType: "Medium",
     lastMonthSales: 23,
     thisMonthSales: 56,
-    demandIncrease: 150,
+    demandIncrease: 50,
   },
   {
     id: 15,
@@ -284,12 +284,15 @@ function DemandProductTable() {
       style={{ boxShadow: "0px 2px 10px 0px rgba(0, 0, 0, 0.10)" }}
     >
       <div className="mt-[90px] bg-white ">
-        <h1
+        {/* <h1
           className="mt-2 ml-4 text-[35px] font-bold font-tinos"
           style={{ color: "#000" }}
         >
           Product Table
-        </h1>
+        </h1> */}
+        <h2 className="font-tinos p-6 text-left text-xl">
+          Product Table
+        </h2>
         <div className="DemandTable p-3">
           <div
             style={{
@@ -338,8 +341,9 @@ function DemandProductTable() {
                   },
                   "& .MuiDataGrid-toolbarContainer": {
                     "& .MuiButton-text": {
-                      fontSize: "16px !important",
+                    
                       color: "#636363",
+                      marginLeft:"30px"
                     },
                   },
                 }}
