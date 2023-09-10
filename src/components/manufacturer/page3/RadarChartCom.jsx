@@ -10,37 +10,37 @@ import {
 
 const data = [
   {
-    subject: "Math",
+    subject: "Mens' Wear",
     A: 120,
     B: 110,
     fullMark: 150,
   },
   {
-    subject: "Chinese",
+    subject: "Swimming Wear",
     A: 98,
     B: 130,
     fullMark: 150,
   },
   {
-    subject: "English",
+    subject: "Mens' Shoes",
     A: 86,
     B: 130,
     fullMark: 150,
   },
   {
-    subject: "Geography",
+    subject: "Womens' Wear",
     A: 99,
     B: 100,
     fullMark: 150,
   },
   {
-    subject: "Physics",
+    subject: "Traveling Wear",
     A: 85,
     B: 90,
     fullMark: 150,
   },
   {
-    subject: "History",
+    subject: "Women's shoes",
     A: 65,
     B: 85,
     fullMark: 150,

@@ -14,45 +14,45 @@ import {
 
 const data = [
   {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
+    name: "MID001",
+    Aug: 4000,
+    Sep: 2400,
     amt: 2400,
   },
   {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
+    name: "MID008",
+    Aug: 3000,
+    Sep: 1398,
     amt: 2210,
   },
   {
-    name: "Page C",
-    uv: 2000,
-    pv: 8,
+    name: "MID009",
+    Aug: 2000,
+    Sep: 8,
     amt: 2290,
   },
   {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
+    name: "MID023",
+    Aug: 2780,
+    Sep: 3908,
     amt: 2000,
   },
   {
-    name: "Page E",
-    uv: 18,
-    pv: 4800,
+    name: "MID009",
+    Aug: 18,
+    Sep: 4800,
     amt: 2181,
   },
   {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
+    name: "MID037",
+    Aug: 2390,
+    Sep: 3800,
     amt: 2500,
   },
   {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
+    name: "MID099",
+    Aug: 3490,
+    Sep: 4300,
     amt: 2100,
   },
 ];
@@ -96,10 +96,10 @@ const BarChartCom = () => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="pv" fill="#cbd5e1" minPointSize={5}>
+        <Bar dataKey="Aug" fill="#cbd5e1" minPointSize={5}>
           <LabelList dataKey="name" content={renderCustomizedLabel} />
         </Bar>
-        <Bar dataKey="uv" fill="#64748b" minPointSize={10} />
+        <Bar dataKey="Sep" fill="#64748b" minPointSize={10} />
       </BarChart>
     </ResponsiveContainer>
   );
