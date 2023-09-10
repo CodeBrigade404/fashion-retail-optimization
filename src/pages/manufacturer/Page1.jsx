@@ -1,6 +1,11 @@
 import React from "react";
 import LineChartBox from "../../components/manufacturer/ManufacturerCards";
-import { chartBoxProduct, chartBoxUser } from "./data/data";
+import {
+  chartBoxProduct,
+  chartBoxUser,
+  chartBoxRevenue,
+  chartBoxConversion,
+} from "./data/data";
 import PieChartComponent from "../../components/manufacturer/page1/PoeChartComponent";
 import BarChartComponent from "../../components/manufacturer/page1/BarChartComponent";
 
@@ -30,10 +35,10 @@ function Page1() {
             <LineChartBox {...chartBoxProduct} />
           </div>
           <div className="box2" style={boxStyle}>
-            <LineChartBox {...chartBoxUser} />
+            <LineChartBox {...chartBoxRevenue} />
           </div>
           <div className="box3" style={boxStyle}>
-            <LineChartBox {...chartBoxProduct} />
+            <LineChartBox {...chartBoxConversion} />
           </div>
         </div>
         <div className="flex flex-row">
