@@ -41,22 +41,24 @@ const Profit = () => {
 							}}></div>
 						<div className="grid md:grid-cols-3 gap-4">
 							{/* Card 1: Profit Prediction */}
-							<div className="bg-white rounded-lg p-6 text-center shadow-md">
+							<div
+								className="bg-white rounded-lg p-6 text-center shadow-md"
+								style={{ height: "150px" }}>
 								<h2 className="font-tinos">Profit Prediction (Monthly)</h2>
-								<h1 className="text-2xl font-bold">Rs. 100,000</h1>
+								<h1 className="text-2xl font-bold">Rs. 636,350</h1>
 								{/* <FaRegCalendarMinus className="title flex items-center gap-[10px]" /> */}
 							</div>
 
 							{/* Card 2: No. of Products */}
 							<div className="bg-white rounded-lg p-6 text-center shadow-md">
-								<h2 className="font-tinos">No. of Products</h2>
-								<h1 className="text-2xl font-bold">100,000</h1>
+								<h2 className="font-tinos">Total Sales(Monthly)</h2>
+								<h1 className="text-2xl font-bold">Rs.1,030,000</h1>
 							</div>
 
 							{/* Card 3: No. of Products */}
 							<div className="bg-white rounded-lg p-6 text-center shadow-md">
-								<h2 className="font-tinos">No. of Products</h2>
-								<h1 className="text-2xl font-bold">100,000</h1>
+								<h2 className="font-tinos">No. of Products(sold)</h2>
+								<h1 className="text-2xl font-bold">23,569</h1>
 							</div>
 						</div>
 
@@ -82,7 +84,7 @@ const Profit = () => {
 									Profit-Product Table
 								</h2>
 
-								<div className="container mx-auto mt-4 p-2 border border-gray-300 rounded-lg max-h-[680px]">
+								<div className="ProductTable">
 									<ProductTable />
 								</div>
 							</div>

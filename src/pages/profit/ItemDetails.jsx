@@ -45,10 +45,12 @@ function ItemDetails({ isVisible, onClose }) {
 
 	return (
 		<div className="fixed inset-0 flex justify-center items-center">
+			{" "}
+			{/* Updated class to justify-end */}
 			<div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
 			<div className="w-[1000px] flex flex-col relative">
 				<div className="flex justify-end">
-					<button className="text-white text-3xl" onClick={handleClose}>
+					<button className="text-white text-2xl" onClick={handleClose}>
 						X
 					</button>
 				</div>

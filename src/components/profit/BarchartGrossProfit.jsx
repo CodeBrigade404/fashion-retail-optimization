@@ -60,7 +60,7 @@ function Barchart() {
 		<div className="netProfit">
 			<h2 className="text-left  ml-4 font-tinos text-2xl">Gross Profit</h2>
 			<div className="netProfit">
-				<ResponsiveContainer width={550} height={200}>
+				<ResponsiveContainer width={550} height={350}>
 					<BarChart data={data}>
 						<CartesianGrid strokeDasharray="3 3" />
 						<XAxis dataKey="name" />
