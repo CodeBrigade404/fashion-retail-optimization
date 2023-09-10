@@ -462,7 +462,7 @@ function TableCom() {
                   color: "#fff",
                   "& .MuiButton-text": {
                     //     fontSize: "18px !important",
-                    color: "#fff",
+                    color: "black",
                   },
                 },
               }}
