@@ -44,7 +44,7 @@ function Nav({ activeButton, setActiveButton }) {
             activate(3);
           }}
         >
-          button3
+          Register
         </button>
       </div>
     </div>
