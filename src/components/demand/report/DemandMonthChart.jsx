@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -6,87 +7,75 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
+import demandAxios from "../../../pages/demand/BaseURL";
 
-const data = [
-  {
-    name: "Jan",
-    sales: 4000,
-    sale1: 4100,
-  },
-  {
-    name: "Feb",
-    sales: 3000,
-    sale1: 3400,
-  },
-  {
-    name: "Mar",
-    sales: 200,
-    sale1: 2000,
-  },
-  {
-    name: "Apr",
-    sales: 1200,
-    sale1: 2100,
-  },
-  {
-    name: "May",
-    sales: 1890,
-    sale1: 2300,
-  },
-  {
-    name: "Jun",
-    sales: 2390,
-    sale1: 2500,
-  },
-  {
-    name: "Jul",
-    sales: 3490,
-    sale1: 2789,
-  },
-  {
-    name: "Aug",
-    sales: 2490,
-    sale1: 2570,
-  },
-  {
-    name: "Sep",
-    sales: 3090,
-    sale1: 2360,
-  },
-  {
-    name: "oct",
-    sales: 0,
-    sale1: 4687,
-  },
-  {
-    name: "Nov",
-    sale1: 4300,
-    sales: 0,
-  },
-  {
-    name: "Dec",
-    sales: 0,
-    sale1: 3132,
-  },
-];
+function DemandMonthChart({ currentProduct }) {
+  const [data, setData] = useState([]);
+  const [predictionMade, setPredictionMade] = useState(false);
 
-function getColor(sales) {
-  var color = "";
-  if (sales >= 3000) {
-    color = "#EC5959"; // Use your custom color here
-  }
-  if (sales > 1000 && sales < 3000) {
-    color = "#1BDF83"; // Use your custom color here
-  }
-  if (sales < 1000) {
-    color = "#FFEA2B"; // Use your custom color here
-  }
-  return color;
-}
-function DemandMonthChart() {
+  useEffect(() => {
+    // Fetch data when the component mounts
+    fetchData();
+  }, [currentProduct]);
+
+  const fetchData = async () => {
+    try {
+      const res = await demandAxios.get(`products/${currentProduct}`);
+
+      const salesData = res.data.sales;
+
+      const dataArray = [];
+
+      salesData.forEach((item) => {
+        const year = item.year;
+        const month = item.month.slice(0, 3);
+        const count = item.count;
+
+        const existingEntry = dataArray.find((entry) => entry.month === month);
+
+        if (existingEntry) {
+          existingEntry[year] = count;
+        } else {
+          const newEntry = { month: month };
+          newEntry[year] = count;
+          newEntry[year === "2022" ? "2023" : "2022"] = 0;
+          dataArray.push(newEntry);
+        }
+      });
+
+      setData(dataArray);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const togglePrediction = async () => {
+    if (predictionMade) {
+      await fetchData();
+      setPredictionMade(false);
+    } else {
+      try {
+        const res = await demandAxios.get(`demand/${currentProduct}`);
+
+        const { prediction, predictedMonth } = res.data;
+
+        const updatedData = data.map((entry) => {
+          if (entry.month === predictedMonth.slice(0, 3)) {
+            entry["2023"] = prediction;
+          }
+          return entry;
+        });
+
+        setData(updatedData);
+        setPredictionMade(true);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <div className="h-[100%] mt-5 flex flex-col items-center">
       <ResponsiveContainer width="100%" height="75%">
@@ -104,56 +93,64 @@ function DemandMonthChart() {
             labelStyle={{ display: "none" }}
             cursor={{ fill: "white" }}
           ></Tooltip>
-          <XAxis dataKey="name" />
-          <YAxis type="number" domain={[0, "dataMax + 1000"]} />
+          <XAxis dataKey="month" />
+          <YAxis type="number" domain={[0, "dataMax + 40"]} />
           <CartesianGrid strokeDasharray="3 3" />
 
-          {
-            <Bar dataKey="sales">
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill="#9BDAE3" />
-              ))}
-            </Bar>
-          }
-          {
-            <Bar dataKey="sale1">
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill="#B38383" />
-              ))}
-            </Bar>
-          }
+          <Bar dataKey="2022">
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill="#64748B" />
+            ))}
+          </Bar>
+          <Bar dataKey="2023">
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={
+                  predictionMade && entry.month === "Oct"
+                    ? "#04062C"
+                    : "#CBD5E1"
+                }
+              />
+            ))}
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
       <div
-        className="flex  gap-6"
+        className="flex  gap-6 items-center"
         style={{ fontFamily: "inter", fontSize: "14px", fontWeight: "600" }}
       >
         <div
           className="high flex flex-col  items-center"
-          style={{ color: "#6e2323" }}
+          style={{ color: "#64748B" }}
         >
           <div className="flex items-center gap-2">
             <div
               className="w-3 h-3 -700 rounded-full"
-              style={{ backgroundColor: "#B38383" }}
+              style={{ backgroundColor: "#64748B" }}
             />
-            <div>High</div>
+            <div>Last Year</div>
           </div>
-          <div> {">3000"}</div>
         </div>
         <div
           className="high flex flex-col  items-center"
-          style={{ color: "#84B6BD" }}
+          style={{ color: "#CBD5E1" }}
         >
           <div className="flex items-center gap-2">
             <div
               className="w-3 h-3 -700 rounded-full"
-              style={{ backgroundColor: "#9BDAE3" }}
+              style={{ backgroundColor: "#CBD5E1" }}
             />
-            <div>Medium</div>
+            <div>This Year</div>
           </div>
-          <div> {">1000"}</div>
         </div>
+        <button
+          className="bg-slate-500 w-[200px] text-white py-1.5 rounded-md"
+          style={{ backgroundColor: "#04062C" }}
+          onClick={togglePrediction}
+        >
+          {predictionMade ? "Revert Prediction" : "Predict"}
+        </button>
       </div>
     </div>
   );
