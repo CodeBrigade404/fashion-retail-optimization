@@ -27,9 +27,10 @@ function ColorBarChart(props) {
               cursor={{ fill: "white" }}
             ></Tooltip>
             <Bar dataKey={props.dataKey}>
-              {props.chartData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={barColors[index]} />
-              ))}
+              {props.chartData &&
+                props.chartData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={barColors[index]} />
+                ))}
             </Bar>
           </BarChart>
         </ResponsiveContainer>

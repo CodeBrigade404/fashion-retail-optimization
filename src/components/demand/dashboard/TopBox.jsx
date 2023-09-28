@@ -1,13 +1,14 @@
-import { topDealProducts } from "../../../pages/demand/data/data";
-
-function TopBox() {
+function TopBox({ top }) {
+  if (!top || top.length === 0) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="topBox font-tinos">
       <h2 className="font-tinos mb-6 text-left text-lg">
         Top Demanding Products
       </h2>
       <div className="list">
-        {topDealProducts.map((user) => (
+        {top.map((user) => (
           <div className="flex items-center justify-between mb-7" key={user.id}>
             <div className=" flex gap-5">
               <img

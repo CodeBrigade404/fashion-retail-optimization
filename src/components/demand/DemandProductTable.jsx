@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   DataGrid,
   GridToolbar,
@@ -12,10 +13,11 @@ import Box from "@mui/material/Box";
 import ProgressBar from "./table/ProgressBar";
 import ImageCard from "./table/ImageCard";
 import DemandTypeCard from "./table/DemandTypeCard";
+import demandAxios from "../../pages/demand/BaseURL";
 
 const columns = [
   {
-    field: "id",
+    field: "productId",
     headerName: "ID",
     width: 90,
     flex: 0.5,
@@ -24,7 +26,7 @@ const columns = [
     type: "string",
   },
   {
-    field: "productImage",
+    field: "imageUrl",
     headerName: "Image",
     editable: true,
     flex: 1,
@@ -35,8 +37,16 @@ const columns = [
     },
   },
   {
-    field: "item",
+    field: "name",
     headerName: "Item",
+    editable: true,
+    flex: 1,
+    align: "center",
+    headerAlign: "center",
+  },
+  {
+    field: "category",
+    headerName: "Category",
     editable: true,
     flex: 1,
     align: "center",
@@ -91,174 +101,6 @@ const columns = [
   },
 ];
 
-const rows = [
-  {
-    id: "PW232",
-    productImage:
-      "https://www.beverlystreet.lk/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/5/5/5586.jpg",
-    item: "Ladies Long Sleeve ",
-    manufacture: "Dolce & Gabbana",
-    demandType: "High",
-    lastMonthSales: 2300,
-    thisMonthSales: 5679,
-    demandIncrease: 80,
-  },
-  {
-    id: "MS45",
-    productImage:
-      "https://www.beverlystreet.lk/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/5/5/5594.jpg",
-    item: "Ladies T-Shirt-Grey",
-    manufacture: "Burberry",
-    demandType: "Medium",
-    lastMonthSales: 3430,
-    thisMonthSales: 2323,
-    demandIncrease: 90,
-  },
-  {
-    id: "WT45",
-    productImage:
-      "https://www.beverlystreet.lk/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/5/5/5575.jpg",
-    item: "Ladies Long Sleeve",
-    manufacture: "Sakura company",
-    demandType: "Low",
-    lastMonthSales: 2300,
-    thisMonthSales: 1977,
-    demandIncrease: 45,
-  },
-  {
-    id: "WS934",
-    productImage:
-      "https://www.beverlystreet.lk/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/5/5/5534.jpg",
-    item: "Gents Linen Shirt",
-    manufacture: "Off-White",
-    demandType: "Low",
-    lastMonthSales: 2300,
-    thisMonthSales: 1656,
-    demandIncrease: 30,
-  },
-  {
-    id: "WD35",
-    productImage:
-      "https://www.beverlystreet.lk/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/5/5/5596.jpg",
-    item: "Ladies Office Dress",
-    manufacture: "Versace",
-    demandType: "Medium",
-    lastMonthSales: 2300,
-    thisMonthSales: 5600,
-    demandIncrease: 45,
-  },
-  {
-    id: "WS34",
-    productImage:
-      "https://www.beverlystreet.lk/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/5/5/5574.jpg",
-
-    item: "Red Long Sleeve",
-    manufacture: "Shakashi",
-    demandType: "High",
-    lastMonthSales: 9653,
-    thisMonthSales: 13455,
-    demandIncrease: 42,
-  },
-  {
-    id: "WV34",
-    productImage:
-      "https://www.beverlystreet.lk/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/5/5/5576.jpg",
-    item: "Pajama",
-    manufacture: "Valentino",
-    demandType: "High",
-    lastMonthSales: 8343,
-    thisMonthSales: 11156,
-    demandIncrease: 78,
-  },
-  {
-    id: "MS34",
-    productImage:
-      "https://www.beverlystreet.lk/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/5/5539.jpg",
-    item: "Gents Linen ",
-    manufacture: "Kandy",
-    demandType: "Medium",
-    lastMonthSales: 2300,
-    thisMonthSales: 3446,
-    demandIncrease: 87,
-  },
-  {
-    id: "MF45",
-    productImage:
-      "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*",
-    item: "Pajama",
-    manufacture: "Boris company",
-    demandType: "Low",
-    lastMonthSales: 2233,
-    thisMonthSales: 1236,
-    demandIncrease: 40,
-  },
-  {
-    id: "MS23",
-    productImage:
-      "https://www.beverlystreet.lk/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/5/5/5537.jpg",
-    item: "Gents Party",
-    manufacture: "Boris company",
-    demandType: "High",
-    lastMonthSales: 23000,
-    thisMonthSales: 56760,
-    demandIncrease: 43,
-  },
-  {
-    id: 11,
-    productImage:
-      "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*",
-    item: "Pajama",
-    manufacture: "Boris company",
-    demandType: "Medium",
-    lastMonthSales: 23,
-    thisMonthSales: 56,
-    demandIncrease: 50,
-  },
-  {
-    id: 12,
-    productImage:
-      "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*",
-    item: "Pajama",
-    manufacture: "Boris company",
-    demandType: "Low",
-    lastMonthSales: 23,
-    thisMonthSales: 56,
-    demandIncrease: 40,
-  },
-  {
-    id: 12,
-    productImage:
-      "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*",
-    item: "Pajama",
-    manufacture: "Boris company",
-    demandType: "High",
-    lastMonthSales: 23,
-    thisMonthSales: 56,
-    demandIncrease: 90,
-  },
-  {
-    id: 14,
-    productImage:
-      "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*",
-    item: "Pajama",
-    manufacture: "Boris company",
-    demandType: "Medium",
-    lastMonthSales: 23,
-    thisMonthSales: 56,
-    demandIncrease: 50,
-  },
-  {
-    id: 15,
-    productImage:
-      "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pop-womens-garmin-watches-1641919013.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=640:*",
-    item: "Pajama",
-    manufacture: "Boris company",
-    demandType: "Low",
-    lastMonthSales: 23,
-    thisMonthSales: 56,
-    demandIncrease: 40,
-  },
-];
 function CustomPagination() {
   const apiRef = useGridApiContext();
   const page = useGridSelector(apiRef, gridPageSelector);
@@ -277,7 +119,55 @@ function CustomPagination() {
     />
   );
 }
-function DemandProductTable() {
+function DemandProductTable({ method }) {
+  const [products, setProducts] = useState({});
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    try {
+      const res = await demandAxios.get(`products/`);
+      const transformedData = res.data.map((product) => {
+        const thisMonthSales = product.sales.find(
+          (sale) => sale.year === "2023" && sale.month === "September"
+        ); // Change "September" to the desired month if needed
+
+        const lastMonthSales = product.sales.find(
+          (sale) => sale.year === "2023" && sale.month === "August"
+        ); // Change "August" to the desired previous month if needed
+
+        var demand =
+          ((thisMonthSales.count - lastMonthSales.count) /
+            lastMonthSales.count) *
+          100;
+
+        var type = "";
+        if (demand > 20) {
+          type = "High"; // Use your custom color here
+        }
+        if (demand > 0 && demand < 20) {
+          type = "Medium"; // Use your custom color here
+        }
+        if (demand < 0) {
+          type = "Low"; // Use your custom color here
+        }
+        return {
+          ...product,
+          thisMonthSales: thisMonthSales ? thisMonthSales.count : 0,
+          lastMonthSales: lastMonthSales ? lastMonthSales.count : 0,
+          demandIncrease: (
+            ((thisMonthSales.count - lastMonthSales.count) /
+              lastMonthSales.count) *
+            100
+          ).toFixed(2),
+          demandType: type,
+        };
+      });
+      setProducts(transformedData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div
       className="demandProductTable h-screen mx-[20px] rounded-md  overflow-hidden"
@@ -290,20 +180,17 @@ function DemandProductTable() {
         >
           Product Table
         </h1> */}
-        <h2 className="font-tinos p-6 text-left text-xl">
-          Product Table
-        </h2>
+        <h2 className="font-tinos p-3 text-left text-xl pl-4">Product Table</h2>
         <div className="DemandTable p-3">
           <div
             style={{
-              height: "80vh",
+              height: "75vh",
               width: "100%",
-              overflow: "scroll",
             }}
           >
             <Box sx={{ height: "100%", width: "100%" }}>
               <DataGrid
-                rows={rows}
+                rows={products}
                 columns={columns}
                 rowHeight={70}
                 initialState={{
@@ -313,37 +200,40 @@ function DemandProductTable() {
                     },
                   },
                 }}
+                getRowId={(row) => row._id}
+                onRowClick={(row) => {
+                  console.log(row);
+                  method(row.row._id);
+                }}
                 slots={{
                   toolbar: GridToolbar,
                   pagination: CustomPagination,
                 }}
                 pageSizeOptions={[10]}
+                showColumnVerticalBorder={true}
+                showCellVerticalBorder={true}
                 sx={{
-                  // border: 3,
                   "& .MuiDataGrid-columnHeaders": {
-                    backgroundColor: "#fff",
-                    color: "#000",
-                    fontFamily: "Inter",
-                    fontSize: "15px",
+                    backgroundColor: "#000",
+                    color: "#fff",
+                    fontFamily: "Tinos",
+                    fontSize: "16px",
                     fontWeight: "bold",
-
-                    // borderBottom: "6px red solid",
                   },
                   "& .MuiDataGrid-virtualScroller": {
                     backgroundColor: "#fff",
                     color: "#2B2B2B",
-                    fontFamily: "Inter",
+                    fontFamily: "Tinos",
                     fontSize: "14px",
-                    fontWeight: "600",
+                    fontWeight: "400",
                   },
                   "& .MuiDataGrid-footerContainer": {
                     backgroundColor: "#fff",
                   },
                   "& .MuiDataGrid-toolbarContainer": {
                     "& .MuiButton-text": {
-                    
                       color: "#636363",
-                      marginLeft:"30px"
+                      marginLeft: "30px",
                     },
                   },
                 }}

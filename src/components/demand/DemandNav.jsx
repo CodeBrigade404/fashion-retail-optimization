@@ -6,7 +6,7 @@ function DemandNav({ activeButton, setActiveButton }) {
   };
 
   return (
-    <div className=" backdrop-blur-sm fixed pr-28 text-2xl w-full h-20 flex font-tinos items-center justify-between">
+    <div className=" backdrop-blur-sm fixed pr-28 text-2xl w-full h-20 flex font-tinos items-center justify-between z-50">
       {/* <h1 className=" h-fit ml-10 font-extrabold">Demand Analysis</h1> */}
       <h1 className=" h-fit ml-10 ">Demand Analysis</h1>
       <div className=" mr-10 p-2  flex ">
