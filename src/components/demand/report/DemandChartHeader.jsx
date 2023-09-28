@@ -8,7 +8,9 @@ function DemandChartHeader({ product }) {
         <h2 className="font-tinos mb-6 text-left text-lg">Monthly Demand</h2>
         <div className="productDetails flex justify-between gap-14 font-bold mt-7">
           <div className="flex flex-col w-full">
-            <span className="text-gray-500">{product.productId}</span>
+            <span className="text-gray-500">
+              product Id - {product.productId}
+            </span>
             <span className="text-base">{product.name}</span>
           </div>
           <div className="flex flex-col w-full">

@@ -55,8 +55,11 @@ function DemandForm({ product, notice, demandMethod }) {
         "demand/demandNotice",
         requestData
       );
+
       demandMethod(response.data._id);
       alert("Notice Added");
+      setAmount(0);
+      setJustification("");
       console.log("Request successful:", response.data);
     } catch (error) {
       console.error("Error:", error.message);
@@ -191,7 +194,9 @@ function DemandForm({ product, notice, demandMethod }) {
               className="border-4 p-3 w-[100%]"
               style={{
                 border: `2px solid ${
-                  amountError && increaseCheck ? "#e34f4f" : "#D9D9D9"
+                  (amountError || amountEmptyError) && increaseCheck
+                    ? "#e34f4f"
+                    : "#D9D9D9"
                 }`,
                 borderRadius: "8px",
                 fontSize: "14px",
