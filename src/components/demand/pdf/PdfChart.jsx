@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -11,20 +11,22 @@ import {
 } from "recharts";
 import demandAxios from "../../../pages/demand/BaseURL";
 
-function DemandMonthChart({ currentProduct }) {
+function PdfChart({ productId }) {
+  console.log("🚀 ~ file: PdfChart.jsx:15 ~ PdfChart ~ productId:", productId);
   const [data, setData] = useState([]);
-  const [predictionMade, setPredictionMade] = useState(false);
-
   useEffect(() => {
-    // Fetch data when the component mounts
     fetchData();
-  }, [currentProduct]);
+  }, [productId]);
 
   const fetchData = async () => {
     try {
-      const res = await demandAxios.get(`products/${currentProduct}`);
+      const [salesRes, predictionRes] = await Promise.all([
+        demandAxios.get(`products/productId/${productId}`),
+        demandAxios.get(`demand/demandBydRealProductId/${productId}`),
+      ]);
 
-      const salesData = res.data.sales;
+      const salesData = salesRes.data.sales;
+      const predictionData = predictionRes.data;
 
       const dataArray = [];
 
@@ -45,40 +47,21 @@ function DemandMonthChart({ currentProduct }) {
         }
       });
 
+      dataArray.forEach((entry) => {
+        if (entry.month === predictionData.predictedMonth.slice(0, 3)) {
+          entry["2023"] = predictionData.prediction;
+        }
+      });
+
       setData(dataArray);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const togglePrediction = async () => {
-    if (predictionMade) {
-      await fetchData();
-      setPredictionMade(false);
-    } else {
-      try {
-        const res = await demandAxios.get(`demand/${currentProduct}`);
-
-        const { prediction, predictedMonth } = res.data;
-
-        const updatedData = data.map((entry) => {
-          if (entry.month === predictedMonth.slice(0, 3)) {
-            entry["2023"] = prediction;
-          }
-          return entry;
-        });
-
-        setData(updatedData);
-        setPredictionMade(true);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
-
   return (
-    <div className="h-[100%] mt-5 flex flex-col items-center">
-      <ResponsiveContainer width="100%" height="75%">
+    <div className="h-[100%] mt-5 flex flex-col item-start items-center ">
+      <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={data}
           margin={{
@@ -106,11 +89,7 @@ function DemandMonthChart({ currentProduct }) {
             {data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
-                fill={
-                  predictionMade && entry.month === "Oct"
-                    ? "#cc7670"
-                    : "#CBD5E1"
-                }
+                fill={entry.month === "Oct" ? "#cc7670" : "#CBD5E1"}
               />
             ))}
           </Bar>
@@ -134,26 +113,19 @@ function DemandMonthChart({ currentProduct }) {
         </div>
         <div
           className="high flex flex-col  items-center"
-          style={{ color: "#CBD5E1" }}
+          style={{ color: "#a3adb8" }}
         >
           <div className="flex items-center gap-2">
             <div
               className="w-3 h-3 -700 rounded-full"
-              style={{ backgroundColor: "#CBD5E1" }}
+              style={{ backgroundColor: "#a3adb8" }}
             />
             <div>This Year</div>
           </div>
         </div>
-        <button
-          className="bg-slate-500 w-[200px] text-white py-1.5 rounded-md"
-          style={{ backgroundColor: "#04062C" }}
-          onClick={togglePrediction}
-        >
-          {predictionMade ? "Revert Prediction" : "Predict"}
-        </button>
       </div>
     </div>
   );
 }
 
-export default DemandMonthChart;
+export default PdfChart;

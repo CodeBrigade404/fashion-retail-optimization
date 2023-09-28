@@ -51,6 +51,19 @@ function DemandNav({ activeButton, setActiveButton }) {
         >
           Report
         </button>
+        <button
+          className={`ml-8 text-lg drop-shadow-md bg-white py-2 px-8 transition-all duration-700 ease-linear  rounded-md  ${
+            activeButton === 4
+              ? "text-gray-800 font-extrabold"
+              : "text-gray-400"
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            activate(4);
+          }}
+        >
+          Notices
+        </button>
       </div>
     </div>
   );

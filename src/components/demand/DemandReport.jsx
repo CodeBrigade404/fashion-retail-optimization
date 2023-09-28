@@ -7,9 +7,8 @@ import demandAxios from "../../pages/demand/BaseURL";
 function DemandReport({ currentProduct, notice, demandMethod }) {
   const [product, setProduct] = useState({});
   useEffect(() => {
-    // Fetch data when the component mounts
     fetchData();
-  }, [currentProduct]); // Re-run when currentProduct changes
+  }, [currentProduct]);
   const fetchData = async () => {
     try {
       const res = await demandAxios.get(`products/${currentProduct}`);
@@ -18,6 +17,7 @@ function DemandReport({ currentProduct, notice, demandMethod }) {
       console.log(error);
     }
   };
+
   return (
     <div className="demandProductTable h-screen mx-[20px] overflow-hidden">
       <div className="content flex gap-6 justify-between h-[85%] mt-[70px]">
