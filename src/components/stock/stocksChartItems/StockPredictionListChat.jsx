@@ -8,6 +8,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 
 const data = [
   {
@@ -73,43 +75,73 @@ const data = [
 ];
 
 const StockChart = () => {
+  const generateReport = () => {
+    const graphImage = document.getElementById("stockChartImage");
+    html2canvas(graphImage, {
+      logging: true,
+      letterRendering: 1,
+      useCORS: true,
+    }).then((canvas) => {
+      const imageWidth = 208;
+      const imageHeight = (canvas.height * imageWidth) / canvas.width;
+      const imageData = canvas.toDataURL("image/png"); // Corrected function name
+      const pdf = new jsPDF("p", "mm", "a4");
+      pdf.addImage(imageData, "PNG", 0, 0, imageWidth, imageHeight);
+      pdf.save("Annual Stored Stock Availability.pdf");
+    });
+  };
+
   return (
-    <div className=" w-full ">
-      <h2 className="font-tinos text-center mb-6 text-left text-md">
-        Annual Stored Stock Availability
-      </h2>
-      <ResponsiveContainer width="100%" height={347}>
-        <LineChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
+    <div className="stockChartImage" id="stockChartImage">
+      <div className=" w-full">
+        <h2 className="font-tinos text-center mb-6 text-left text-md">
+          Annual Stored Stock Availability
+        </h2>
+
+        <ResponsiveContainer width="100%" height={347}>
+          <LineChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="month" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="mens"
+              name="Men's"
+              stroke="#8884d8"
+            />
+            <Line
+              type="monotone"
+              dataKey="womens"
+              name="Women's"
+              stroke="#82ca9d"
+            />
+            <Line
+              type="monotone"
+              dataKey="babys"
+              name="Baby's"
+              stroke="#ff7300"
+            />
+          </LineChart>
+        </ResponsiveContainer>
+        <span
+          onClick={generateReport}
+          className="font-tinos text-center mb-6 text-left text-md pl-56"
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="mens" name="Men's" stroke="#8884d8" />
-          <Line
-            type="monotone"
-            dataKey="womens"
-            name="Women's"
-            stroke="#82ca9d"
-          />
-          <Line
-            type="monotone"
-            dataKey="babys"
-            name="Baby's"
-            stroke="#ff7300"
-          />
-        </LineChart>
-      </ResponsiveContainer>
+          Generate Report &#x1F4E5;
+        </span>
+      </div>
     </div>
   );
 };
