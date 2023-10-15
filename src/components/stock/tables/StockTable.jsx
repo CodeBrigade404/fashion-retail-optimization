@@ -98,23 +98,6 @@ function StockTable() {
       align: "center",
       headerAlign: "center",
       type: "number",
-      renderCell: (params) => (
-        <div>
-          <IconButton
-            onClick={() => handleDecreaseQuantity(params.row)}
-            disabled={params.row.quantity <= 10}
-          >
-            <RemoveIcon />
-          </IconButton>
-          {params.row.quantity}
-          <IconButton
-            onClick={() => handleIncreaseQuantity(params.row)}
-            disabled={params.row.quantity >= 110}
-          >
-            <AddIcon />
-          </IconButton>
-        </div>
-      ),
     },
     {
       field: "edit",
@@ -129,6 +112,7 @@ function StockTable() {
         </IconButton>
       ),
     },
+
     {
       field: "delete",
       headerName: "Delete",
@@ -141,6 +125,14 @@ function StockTable() {
           <DeleteIcon />
         </IconButton>
       ),
+    },
+    {
+      field: "predicatedStockCount",
+      headerName: "Predicated Stock Count for next Month",
+      sortable: false,
+      flex: 0.5,
+      align: "center",
+      headerAlign: "center",
     },
   ];
 
@@ -163,26 +155,12 @@ function StockTable() {
     setSelectedRow(null);
   };
 
-  const handleDecreaseQuantity = (row) => {
-    if (row.quantity > 10) {
-      const updatedRow = { ...row, quantity: row.quantity - 10 };
-      updateRowInArray(updatedRow);
-    }
-  };
-
-  const handleIncreaseQuantity = (row) => {
-    if (row.quantity < 110) {
-      const updatedRow = { ...row, quantity: row.quantity + 10 };
-      updateRowInArray(updatedRow);
-    }
-  };
-
-  const updateRowInArray = (updatedRow) => {
-    const updatedRows = rowsWithQuantities.map((row) =>
-      row.id === updatedRow.id ? updatedRow : row
-    );
-    setRowsWithQuantities(updatedRows);
-  };
+  // const updateRowInArray = (updatedRow) => {
+  //   const updatedRows = rowsWithQuantities.map((row) =>
+  //     row.id === updatedRow.id ? updatedRow : row
+  //   );
+  //   setRowsWithQuantities(updatedRows);
+  // };
 
   return (
     <div className=" h-screen mx-[20px] bg-white rounded-md">
