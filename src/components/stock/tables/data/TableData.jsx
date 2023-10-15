@@ -7,6 +7,7 @@ export const rows = [
     manufacture: "Dolce & Gabbana",
     quantity: 10,
     price: "$2520",
+    predicatedStockCount: "200",
   },
   {
     id: "MS45",
@@ -16,6 +17,7 @@ export const rows = [
     manufacture: "Burberry",
     quantity: 10,
     price: "$2520",
+    predicatedStockCount: "200",
   },
   {
     id: "ABC123",
@@ -24,6 +26,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 1",
     quantity: 5,
     price: "$100",
+    predicatedStockCount: "200",
   },
   {
     id: "DEF456",
@@ -32,6 +35,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 2",
     quantity: 7,
     price: "$75",
+    predicatedStockCount: "200",
   },
   {
     id: "GHI789",
@@ -40,6 +44,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 3",
     quantity: 3,
     price: "$50",
+    predicatedStockCount: "200",
   },
   {
     id: "JKL101",
@@ -48,6 +53,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 4",
     quantity: 8,
     price: "$120",
+    predicatedStockCount: "200",
   },
   {
     id: "MNO111",
@@ -56,6 +62,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 5",
     quantity: 12,
     price: "$180",
+    predicatedStockCount: "200",
   },
   {
     id: "PQR222",
@@ -64,6 +71,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 6",
     quantity: 4,
     price: "$60",
+    predicatedStockCount: "200",
   },
   {
     id: "STU333",
@@ -72,6 +80,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 7",
     quantity: 9,
     price: "$135",
+    predicatedStockCount: "200",
   },
   {
     id: "VWX444",
@@ -80,6 +89,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 8",
     quantity: 6,
     price: "$90",
+    predicatedStockCount: "200",
   },
   {
     id: "YZA555",
@@ -88,6 +98,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 9",
     quantity: 15,
     price: "$225",
+    predicatedStockCount: "200",
   },
   {
     id: "BCD666",
@@ -96,6 +107,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 10",
     quantity: 2,
     price: "$30",
+    predicatedStockCount: "200",
   },
   {
     id: "EFG777",
@@ -104,6 +116,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 11",
     quantity: 11,
     price: "$165",
+    predicatedStockCount: "200",
   },
   {
     id: "HIJ888",
@@ -112,6 +125,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 12",
     quantity: 6,
     price: "$90",
+    predicatedStockCount: "200",
   },
   {
     id: "KLM999",
@@ -120,6 +134,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 13",
     quantity: 3,
     price: "$45",
+    predicatedStockCount: "200",
   },
   {
     id: "NOP1010",
@@ -128,6 +143,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 14",
     quantity: 7,
     price: "$105",
+    predicatedStockCount: "200",
   },
   {
     id: "QRS1111",
@@ -136,6 +152,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 15",
     quantity: 10,
     price: "$150",
+    predicatedStockCount: "200",
   },
   {
     id: "TUV1212",
@@ -144,6 +161,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 16",
     quantity: 5,
     price: "$75",
+    predicatedStockCount: "200",
   },
   {
     id: "WXYZ1313",
@@ -152,6 +170,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 17",
     quantity: 8,
     price: "$120",
+    predicatedStockCount: "200",
   },
   {
     id: "123ABC",
@@ -160,6 +179,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 18",
     quantity: 4,
     price: "$60",
+    predicatedStockCount: "200",
   },
   {
     id: "456DEF",
@@ -168,6 +188,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 19",
     quantity: 9,
     price: "$135",
+    predicatedStockCount: "200",
   },
   {
     id: "789GHI",
@@ -176,6 +197,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 20",
     quantity: 12,
     price: "$180",
+    predicatedStockCount: "200",
   },
   {
     id: "101JKL",
@@ -184,6 +206,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 21",
     quantity: 6,
     price: "$90",
+    predicatedStockCount: "200",
   },
   {
     id: "111MNO",
@@ -192,6 +215,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 22",
     quantity: 15,
     price: "$225",
+    predicatedStockCount: "200",
   },
   {
     id: "222PQR",
@@ -200,6 +224,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 23",
     quantity: 2,
     price: "$30",
+    predicatedStockCount: "200",
   },
   {
     id: "333STU",
@@ -208,6 +233,7 @@ export const rows = [
     manufacture: "Sample Manufacturer 24",
     quantity: 11,
     price: "$165",
+    predicatedStockCount: "200",
   },
   {
     id: "444VWX",
@@ -216,6 +242,6 @@ export const rows = [
     manufacture: "Sample Manufacturer 25",
     quantity: 6,
     price: "$90",
+    predicatedStockCount: "200",
   },
-  // Add more data rows here...
 ];

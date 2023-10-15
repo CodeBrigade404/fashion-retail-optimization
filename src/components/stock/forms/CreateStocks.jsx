@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HorizontalLinearAlternativeLabelStepper from "./Stepper";
+import FormHeader from "./formHeaders/fromHeader";
 import axios from "axios";
 
 export default function CreateStocks() {
@@ -15,20 +16,47 @@ export default function CreateStocks() {
 	const [selectedProductType, setSelectedProductType] = useState("");
 	const [imagePath, setImagePath] = useState("");
 	const [clothData, setClothData] = useState({});
+	const [productId, setProductId] = useState("");
+	const [manufactureId, setManufactureId] = useState("");
+	const [productDate, setProductDate] = useState("");
+	const [productQuantity, setProductQuantity] = useState("");
+	const [price, setPrice] = useState("");
+
+	console.log("selectedGenderCategory", selectedGenderCategory);
+
+	const productTypes = ["T-shirt", "Shorts", "Cap", "Saree", "Blouse", "Belt"];
+
+	const handleProductIdChange = (event) => {
+		setProductId(event.target.value);
+		console.log(productId);
+	};
+
+	const handleManufactureIdChange = (event) => {
+		setManufactureId(event.target.value);
+	};
+
+	const handleProductDateChange = (event) => {
+		setProductDate(event.target.value);
+	};
 
 	const handleGenderCategoryChange = (event) => {
 		setSelectedGenderCategory(event.target.value);
 	};
-	console.log("selectedGenderCategory", selectedGenderCategory);
 
 	const handleFreshnessCategoryChange = (event) => {
 		setSelectedFreshnessCategory(event.target.value);
 	};
 
-	const productTypes = ["T-shirt", "Shorts", "Cap", "Saree", "Blouse", "Belt"];
-
 	const handleProductTypeChange = (event) => {
 		setSelectedProductType(event.target.value);
+	};
+
+	const handleProductQuantityChange = (event) => {
+		setProductQuantity(event.target.value);
+	};
+
+	const handlePriceChange = (event) => {
+		setPrice(event.target.value);
 	};
 
 	console.log("selectedProductType", selectedProductType);
@@ -52,22 +80,73 @@ export default function CreateStocks() {
 		}
 	};
 
+	try {
+		const createCloth = async () => {
+			const clothDataToSend = {
+				productId,
+				manufactureId,
+				productDate,
+				clothType: selectedProductType,
+				freshnessCategory: selectedFreshnessCategory,
+				productQuantity,
+				price,
+				imagePath,
+			};
+			console.log("clothDataToSend", clothDataToSend);
+			try {
+				const response = await axios.post(
+					"http://localhost:3001/cloths",
+					clothDataToSend
+				);
+				if (response.status === 201) {
+					console.log("Cloth created successfully", response.data);
+					// Optionally, you can reset the form fields here if needed
+					setProductId("");
+					setManufactureId("");
+					setProductDate("");
+					setSelectedProductType("");
+				} else {
+					// Handle errors or other status codes
+				}
+			} catch (error) {
+				// Handle network or server errors
+				console.error("Error creating cloth", error);
+			}
+		};
+	} catch (error) {
+		console.error("Error creating createCloth function", error);
+	}
+
 	const createCloth = async () => {
 		const clothDataToSend = {
-			...clothData,
-			//clothType: selectedGenderCategory,
-			//freshnessCategory: selectedFreshnessCategory,
-			clothType: selectedProductType,
+			productId,
+			manufactureId,
+			productDate,
+			clothType: selectedProductType, // This should be productType
+			freshnessCategory: selectedFreshnessCategory,
+			productQuantity,
+			price,
 			imagePath,
 		};
-		console.log("clothDataToSend", clothDataToSend);
+
 		try {
+			// Make a POST request to your back-end to create a new cloth
 			const response = await axios.post(
 				"http://localhost:3001/cloths",
 				clothDataToSend
 			);
+
 			if (response.status === 201) {
 				console.log("Cloth created successfully", response.data);
+				// Optionally, you can reset the form fields here if needed
+				setProductId("");
+				setManufactureId("");
+				setProductDate("");
+				setSelectedProductType("");
+				setSelectedFreshnessCategory("");
+				setProductQuantity("");
+				setPrice("");
+				setImagePath("");
 			} else {
 				// Handle errors or other status codes
 			}
@@ -79,282 +158,251 @@ export default function CreateStocks() {
 
 	return (
 		<form style={{ ...boxStyle }}>
-			<div className="space-y-12">
-				<div className="pb-12">
-					<h2 className="text-lg font-tinos leading-7 text-gray-900">
-						<div className="flex">
-							<svg
-								className="w-8 h-8 pr-2"
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 -960 960 960">
-								<path
-									fill="black"
-									d="M480-80 120-280v-400l360-200 360 200v400L480-80ZM364-590q23-24 53-37t63-13q33 0 63 13t53 37l120-67-236-131-236 131 120 67Zm76 396v-131q-54-14-87-57t-33-98q0-11 1-20.5t4-19.5l-125-70v263l240 133Zm40-206q33 0 56.5-23.5T560-480q0-33-23.5-56.5T480-560q-33 0-56.5 23.5T400-480q0 33 23.5 56.5T480-400Zm40 206 240-133v-263l-125 70q3 10 4 19.5t1 20.5q0 55-33 98t-87 57v131Z"
-								/>
-							</svg>
-							Store Fashion Product
-						</div>
-					</h2>
-
-					<p className="mt-1 text-sm leading-6 text-gray-600">
-						This information will be displayed publicly, so be careful what you
-						are storing.
-					</p>
-					<div className="p-2 pb-14 mt-8">
-						<HorizontalLinearAlternativeLabelStepper />
-					</div>
-
-					<div className="mt-10 grid grid-cols-1 gap-6">
-						<div>
-							<label
-								htmlFor="username"
-								className="block text-sm font-medium leading-6 text-gray-900">
-								Product Identity
-							</label>
-							<div className="mt-2">
-								<div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-									<span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
-										fashioner.com/Product
-									</span>
-									<input
-										type="text"
-										name="username"
-										id="username"
-										autoComplete="username"
-										className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-										placeholder="PID2067"
-									/>
-								</div>
-							</div>
-						</div>
-						<div>
-							<label
-								htmlFor="username"
-								className="block text-sm font-medium leading-6 text-gray-900">
-								Manufacture Identity
-							</label>
-							<div className="mt-2">
-								<div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-									<span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
-										fashioner.com/Manufacture
-									</span>
-									<input
-										type="text"
-										name="username"
-										id="username"
-										autoComplete="username"
-										className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-										placeholder="MAF60967"
-									/>
-								</div>
-							</div>
-						</div>
-						<div>
-							<label
-								htmlFor="category"
-								className="block text-sm font-medium leading-6 text-gray-900">
-								Gender Category
-							</label>
-							<div className="flex mt-2">
-								<label className="inline-flex pr-4 items-center">
-									<input
-										type="radio"
-										name="GenderCategory"
-										value="Mens"
-										onChange={handleGenderCategoryChange}
-										checked={selectedGenderCategory === "Mens"}
-										className="form-radio h-4 w-4 text-indigo-600"
-									/>
-									<span className="ml-2">Mens</span>
-								</label>
-								<label className="inline-flex pr-4 items-center">
-									<input
-										type="radio"
-										name="GenderCategory"
-										value="Womens"
-										onChange={handleGenderCategoryChange}
-										checked={selectedGenderCategory === "Womens"}
-										className="form-radio h-4 w-4 text-indigo-600"
-									/>
-									<span className="ml-2">Womens</span>
-								</label>
-								<label className="inline-flex pr-4 items-center">
-									<input
-										type="radio"
-										name="GenderCategory"
-										value="Babys"
-										onChange={handleGenderCategoryChange}
-										checked={selectedGenderCategory === "Babys"}
-										className="form-radio h-4 w-4 text-indigo-600"
-									/>
-									<span className="ml-2">Babys</span>
-								</label>
-								<label className="inline-flex items-center">
-									<input
-										type="radio"
-										name="GenderCategory"
-										value="Unisex"
-										onChange={handleGenderCategoryChange}
-										checked={selectedGenderCategory === "Unisex"}
-										className="form-radio h-4 w-4 text-indigo-600"
-									/>
-									<span className="ml-2">Unisex</span>
-								</label>
-							</div>
-						</div>
-						<div>
-							<label
-								htmlFor="category"
-								className="block text-sm font-medium leading-6 text-gray-900">
-								Product Freshness
-							</label>
-							<div className="flex mt-2">
-								<label className="inline-flex pr-4 items-center">
-									<input
-										type="radio"
-										name="FreshnessCategory"
-										value="New"
-										onChange={handleFreshnessCategoryChange}
-										checked={selectedFreshnessCategory === "New"}
-										className="form-radio h-4 w-4 text-indigo-600"
-									/>
-									<span className="ml-2">New Product</span>
-								</label>
-								<label className="inline-flex items-center">
-									<input
-										type="radio"
-										name="FreshnessCategory"
-										value="Old"
-										onChange={handleFreshnessCategoryChange}
-										checked={selectedFreshnessCategory === "Old"}
-										className="form-radio h-4 w-4 text-indigo-600"
-									/>
-									<span className="ml-2">Existing Product</span>
-								</label>
-							</div>
-						</div>
-					</div>
-				</div>
+			<FormHeader />
+			<div className="p-2 pb-14 mt-8">
+				<HorizontalLinearAlternativeLabelStepper />
 			</div>
-			<div>
-				<div className=" pb-12">
-					<div className="grid grid-cols-1 gap-6">
-						<div>
-							<label
-								htmlFor="productType"
-								className="block text-sm font-medium leading-6 text-gray-900">
-								Select Product Type
-							</label>
-							<div className="mt-2 flex rounded-md shadow-sm focus:outline-none ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-								<select
-									id="productType"
-									name="productType"
-									value={selectedProductType}
-									onChange={handleProductTypeChange}
-									className="block w-full py-2 pl-3 pr-10 text-base border-0 bg-transparent text-gray-900 placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
-									<option value="">Choose Category...</option>
-									{productTypes.map((type) => (
-										<option key={type} value={type}>
-											{type}
-										</option>
-									))}
-								</select>
-							</div>
-						</div>
-						<div>
-							<label
-								htmlFor="username"
-								className="block text-sm font-medium leading-6 text-gray-900">
-								Product Quantity
-							</label>
-							<div className="mt-2">
-								<div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-									<span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
-										0
-									</span>
-									<input
-										type="text"
-										name="username"
-										id="username"
-										autoComplete="username"
-										className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-									/>
-								</div>
-							</div>
-						</div>
-						<div>
-							<label
-								htmlFor="price"
-								className="block text-sm font-medium leading-6 text-gray-900">
-								Product Price
-							</label>
-
-							<div className="mt-2">
-								<div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-									<input
-										type="text"
-										name="price"
-										id="price"
-										autoComplete="price"
-										className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 focus:border-indigo-600"
-										placeholder="Rs. 3500.00"
-									/>
-								</div>
-							</div>
-						</div>
-
-						<div>
-							<label
-								htmlFor="quantity"
-								className="block text-sm font-medium leading-6 text-gray-900">
-								Product Quantity
-							</label>
-
-							<div className="mt-2">
-								<div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-									<input
-										type="text"
-										name="quantity"
-										id="quantity"
-										autoComplete="quantity"
-										className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-										placeholder="0"
-									/>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div className="col-span-full">
+			<div className="mt-10 grid grid-cols-1 gap-6">
+				<div>
 					<label
-						htmlFor="cover-photo"
+						htmlFor="productId"
 						className="block text-sm font-medium leading-6 text-gray-900">
-						Product Cover
+						Product Identity
 					</label>
-					<div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-						<div className="text-center">
-							<div className="mt-4 flex text-sm leading-6 text-gray-600">
-								<label
-									htmlFor="file-upload"
-									className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-									<span>Upload a file</span>
-									<input
-										id="file-upload"
-										name="file-upload"
-										type="file"
-										className="sr-only"
-										onChange={handleImageUpload}
-									/>
-								</label>
-								<p className="pl-1">or drag and drop</p>
-							</div>
-							<p className="text-xs leading-5 text-gray-600">
-								PNG, JPG, GIF up to 10MB
-							</p>
+					<div className="mt-2">
+						<div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+							<input
+								type="text"
+								name="productId"
+								id="productId"
+								autoComplete="productId"
+								className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+								placeholder="PID2067"
+								onChange={handleProductIdChange}
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<label
+						htmlFor="manufactureId"
+						className="block text-sm font-medium leading-6 text-gray-900">
+						Manufacture Identity
+					</label>
+					<div className="mt-2">
+						<div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+							<input
+								type="text"
+								name="manufactureId"
+								id="manufactureId"
+								autoComplete="manufactureId"
+								className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+								onChange={handleManufactureIdChange}
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<label
+						htmlFor="productDate"
+						className="block text-sm font-medium leading-6 text-gray-900">
+						Date
+					</label>
+					<div className="mt-2">
+						<div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+							<input
+								type="date"
+								name="productDate"
+								id="productDate"
+								autoComplete="productDate"
+								className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+								onChange={handleProductDateChange}
+							/>
+						</div>
+					</div>
+				</div>
+
+				<label
+					htmlFor="gender"
+					className="block text-sm font-medium leading-6 text-gray-900">
+					Gender Category
+				</label>
+
+				<div className="flex mt-2">
+					<div className="inline-flex pr-4 items-center">
+						<input
+							type="radio"
+							name="Mens"
+							value="Mens"
+							onChange={handleGenderCategoryChange}
+							checked={selectedGenderCategory === "Mens"}
+							className="form-radio h-4 w-4 text-indigo-600"
+						/>
+						<span className="ml-2">Mens</span>
+					</div>
+					<div className="inline-flex pr-4 items-center">
+						<input
+							type="radio"
+							name="Womens"
+							value="Womens"
+							onChange={handleGenderCategoryChange}
+							checked={selectedGenderCategory === "Womens"}
+							className="form-radio h-4 w-4 text-indigo-600"
+						/>
+						<span className="ml-2">Womens</span>
+					</div>
+					<div className="inline-flex pr-4 items-center">
+						<input
+							type="radio"
+							name="Babys"
+							value="Babys"
+							onChange={handleGenderCategoryChange}
+							checked={selectedGenderCategory === "Babys"}
+							className="form-radio h-4 w-4 text-indigo-600"
+						/>
+						<span className="ml-2">Babys</span>
+					</div>
+					<label className="inline-flex items-center">
+						<input
+							type="radio"
+							name="Unisex"
+							value="Unisex"
+							onChange={handleGenderCategoryChange}
+							checked={selectedGenderCategory === "Unisex"}
+							className="form-radio h-4 w-4 text-indigo-600"
+						/>
+						<span className="ml-2">Unisex</span>
+					</label>
+				</div>
+
+				<label
+					htmlFor="category"
+					className="block text-sm font-medium leading-6 text-gray-900">
+					Product Freshness
+				</label>
+				<div className="flex mt-2">
+					<label className="inline-flex pr-4 items-center">
+						<input
+							type="radio"
+							name="FreshnessCategory"
+							value="New"
+							onChange={handleFreshnessCategoryChange}
+							checked={selectedFreshnessCategory === "New"}
+							className="form-radio h-4 w-4 text-indigo-600"
+						/>
+						<span className="ml-2">New Product</span>
+					</label>
+					<label className="inline-flex items-center">
+						<input
+							type="radio"
+							name="FreshnessCategory"
+							value="Old"
+							onChange={handleFreshnessCategoryChange}
+							checked={selectedFreshnessCategory === "Old"}
+							className="form-radio h-4 w-4 text-indigo-600"
+						/>
+						<span className="ml-2">Existing Product</span>
+					</label>
+				</div>
+			</div>
+
+			<div className="grid grid-cols-1 gap-6 mt-8">
+				<div>
+					<label
+						htmlFor="productType"
+						className="block text-sm font-medium leading-6 text-gray-900">
+						Select Product Type
+					</label>
+					<div className="mt-2 flex rounded-md shadow-sm focus:outline-none ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+						<select
+							id="productType"
+							name="productType"
+							value={selectedProductType}
+							onChange={handleProductTypeChange}
+							className="block w-full py-2 pl-3 pr-10 text-base border-0 bg-transparent text-gray-900 placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
+							<option value="">Choose Category...</option>
+							{productTypes.map((type) => (
+								<option key={type} value={type}>
+									{type}
+								</option>
+							))}
+						</select>
+					</div>
+				</div>
+				<div>
+					<label
+						htmlFor="productQuantity"
+						className="block text-sm font-medium leading-6 text-gray-900">
+						Product Quantity
+					</label>
+					<div className="mt-2">
+						<div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+							<input
+								type="text"
+								name="productQuantity"
+								id="productQuantity"
+								autoComplete="productQuantity"
+								className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+								onChange={handleProductQuantityChange}
+							/>
+						</div>
+					</div>
+				</div>
+				<div>
+					<label
+						htmlFor="price"
+						className="block text-sm font-medium leading-6 text-gray-900">
+						Product Price
+					</label>
+
+					<div className="mt-2">
+						<div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+							<input
+								type="text"
+								name="price"
+								id="price"
+								autoComplete="price"
+								className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 focus:border-indigo-600"
+								placeholder="Rs. 3500.00"
+								onChange={handlePriceChange}
+							/>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<div className="col-span-full mt-8">
+				<label
+					htmlFor="cover-photo"
+					className="block text-sm font-medium leading-6 text-gray-900">
+					Product Cover
+				</label>
+				<div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+					<div className="text-center">
+						<div className="mt-4 flex text-sm leading-6 text-gray-600">
+							<label
+								htmlFor="file-upload"
+								className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+								<span>Upload a file</span>
+								<input
+									id="file-upload"
+									name="file-upload"
+									type="file"
+									className="sr-only"
+									onChange={handleImageUpload}
+								/>
+							</label>
+							<p className="pl-1">or drag and drop</p>
+						</div>
+						<p className="text-xs leading-5 text-gray-600">
+							PNG, JPG, GIF up to 10MB
+						</p>
+					</div>
+				</div>
+			</div>
+
 			<div className="mt-6 flex items-center justify-end">
 				<button
 					type="button"
