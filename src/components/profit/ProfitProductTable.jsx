@@ -77,11 +77,34 @@ const columns = [
 		headerAlign: "center",
 		type: "number",
 		valueGetter: (params) => {
-			// Check if the row has valid data and then calculate profit
 			const salePrice = params.row.salePrice || 0;
 			const costPrice = params.row.costPrice || 0;
 			const quantity = params.row.quantity || 0;
 			return (salePrice - costPrice) * quantity;
+		},
+	},
+	{
+		field: "predictedQuantity",
+		headerName: "Predicted Quantity",
+		width: 140,
+		flex: 0.5,
+		align: "center",
+		headerAlign: "center",
+		type: "number",
+	},
+	{
+		field: "predictedProfit",
+		headerName: "Predicted Profit",
+		width: 140,
+		flex: 0.5,
+		align: "center",
+		headerAlign: "center",
+		type: "number",
+		valueGetter: (params) => {
+			const predictedQuantity = params.row.predictedQuantity || 0;
+			const salePrice = params.row.salePrice || 0;
+			const costPrice = params.row.costPrice || 0;
+			return predictedQuantity * (salePrice - costPrice);
 		},
 	},
 ];
@@ -120,8 +143,38 @@ function DemandProductTable() {
 			});
 	}, []);
 
-	const openPopup = (profitId) => {
-		setSelectedProfitId(profitId);
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await axios.get("http://localhost:3001/sales");
+				const quantityArray = response.data.map((item) => [item.quantity]);
+				console.log("Quantity Array:", quantityArray);
+
+				const predictionResponse = await axios.post(
+					"https://fashionml.onrender.com/stockPredict",
+					quantityArray
+				);
+				console.log(
+					"Prediction Response Data:",
+					predictionResponse.data.predictions[0]
+				);
+
+				const updatedRows = response.data.map((row, index) => ({
+					...row,
+					predictedQuantity: predictionResponse.data.predictions[index],
+				}));
+				setRows(updatedRows);
+			} catch (error) {
+				console.error("Error:", error);
+			}
+		};
+
+		fetchData();
+	}, []);
+
+	const openPopup = (clothID) => {
+		setSelectedProfitId(clothID);
+		console.log("clothID", clothID);
 	};
 
 	const closePopup = () => {
@@ -145,7 +198,7 @@ function DemandProductTable() {
 								rows={rows}
 								columns={columns}
 								rowHeight={80}
-								getRowId={(row) => row._id} // Assuming _id is the unique identifier
+								getRowId={(row) => row._id}
 								initialState={{
 									pagination: {
 										paginationModel: {
@@ -158,12 +211,7 @@ function DemandProductTable() {
 									pagination: CustomPagination,
 								}}
 								pageSizeOptions={[10]}
-								sx={
-									{
-										// ... Your styling remains the same
-									}
-								}
-								onRowClick={(params) => openPopup(params.row._id)} // Open popup when a row is clicked
+								onRowClick={(params) => openPopup(params.row.clothID)}
 							/>
 						</Box>
 					</div>
@@ -171,11 +219,7 @@ function DemandProductTable() {
 			</div>
 
 			{selectedProfitId !== null && (
-				// Render your popup component here for the selected item
-				<ItemDetails
-					isVisible={true} // Pass true to make the popup visible
-					onClose={closePopup}
-				/>
+				<ItemDetails isVisible={true} onClose={closePopup} />
 			)}
 		</div>
 	);

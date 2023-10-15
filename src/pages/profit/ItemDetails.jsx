@@ -1,16 +1,32 @@
 import React, { useRef } from "react";
 import LineChartNetProfit from "../../components/profit/LineChartEachNetProfit";
 import LineChartGrossProfit from "../../components/profit/LineChartEachGrossProfit";
+import { useState, useEffect } from "react";
 
 const sampleImage =
 	"https://www.beverlystreet.lk/media/catalog/product/cache/1/image/17f82f742ffe127f42dca9de82fb58b1/5/5/5594.jpg";
 
-function ItemDetails({ isVisible, onClose }) {
+function ItemDetails({ isVisible, onClose, clothID }) {
 	if (!isVisible) return null;
 
 	const handleClose = () => {
 		onClose();
 	};
+	const [salesData, setSalesData] = useState(null);
+	console.log("salesData", clothID);
+	useEffect(() => {
+		if (clothID) {
+			// Make an HTTP request to your backend to fetch the sales data
+			axios
+				.get(`http://localhost:3001/sales/${clothID}`)
+				.then((response) => {
+					setSalesData(response.data);
+				})
+				.catch((error) => {
+					console.error("Error fetching sales data:", error);
+				});
+		}
+	}, [clothID]);
 
 	// Example product details
 	const productDetails = {
@@ -42,6 +58,20 @@ function ItemDetails({ isVisible, onClose }) {
 	const scrollToGrossProfit = () => {
 		grossProfitSectionRef.current.scrollIntoView({ behavior: "smooth" });
 	};
+
+	useEffect(() => {
+		if (clothID) {
+			// Make an HTTP request to your backend to fetch the sales data
+			axios
+				.get(`http://localhost:3001/sales/${clothID}`)
+				.then((response) => {
+					setSalesData(response.data);
+				})
+				.catch((error) => {
+					console.error("Error fetching sales data:", error);
+				});
+		}
+	}, [clothID]);
 
 	return (
 		<div className="fixed inset-0 flex justify-center items-center">
