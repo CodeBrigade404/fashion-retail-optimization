@@ -3,7 +3,7 @@ import RadarChartCom from "./RadarChartCom";
 
 function RadarChartComponent() {
   return (
-    <div className="w-5/12 bg-white rounded-lg h-[80%] mr-10 ">
+    <div className="w-7/12 bg-white rounded-lg h-[80%] mr-10 ">
       <h2 className="font-tinos text-2xl mt-6 text-left ml-6">
         Manufacturer Distribution
       </h2>
