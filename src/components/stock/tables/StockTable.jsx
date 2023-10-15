@@ -114,7 +114,7 @@ function StockTable() {
 			align: "center",
 			headerAlign: "center",
 			renderCell: (params) => (
-				<IconButton onClick={() => handleDeleteProductItem(params.row.id)}>
+				<IconButton onClick={() => handleDeleteProductItem(params.row._id)}>
 					<DeleteIcon />
 				</IconButton>
 			),
@@ -129,8 +129,17 @@ function StockTable() {
 		},
 	];
 
-	const handleDeleteProductItem = (row) => {
-		console.log(row);
+	const handleDeleteProductItem = (rowId) => {
+		axios
+			.delete(`http://localhost:3001/cloths/${rowId}`)
+			.then((response) => {
+				// Handle the successful delete, e.g., remove the deleted row from the UI.
+				console.log(`Deleted item with _id: ${rowId}`);
+				window.location.reload();
+			})
+			.catch((error) => {
+				console.error(`Error deleting item with _id ${rowId}: ${error}`);
+			});
 	};
 
 	const handleEditProductItem = (row) => {

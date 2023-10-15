@@ -19,6 +19,7 @@ const Profit = () => {
 	const [totalProfitData, setTotalProfitData] = useState([]);
 	const [totalProductSoldQty, setTotalProductSoldQty] = useState([]);
 	const [profitData, setProfitData] = useState([]);
+	console.log("profitData", profitData);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -91,7 +92,9 @@ const Profit = () => {
 							{/* Card 2: No. of Products */}
 							<div className="bg-white rounded-lg p-6 text-center shadow-md">
 								<h2 className="font-tinos">Total Profit (Year)</h2>
-								<h1 className="text-2xl font-bold">Rs.{profitData.profit}</h1>
+								<h1 className="text-2xl font-bold">
+									Rs.{profitData.totalProfit}
+								</h1>
 							</div>
 
 							{/* Card 3: No. of Products */}

@@ -12,6 +12,8 @@ import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import Box from "@mui/material/Box";
 import ItemDetails from "../../pages/profit/ItemDetails";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const columns = [
 	{
@@ -107,7 +109,34 @@ const columns = [
 			return predictedQuantity * (salePrice - costPrice);
 		},
 	},
+	{
+		field: "delete",
+		headerName: "Delete",
+		sortable: false,
+		flex: 0.5,
+		align: "center",
+		headerAlign: "center",
+		renderCell: (params) => (
+			<IconButton onClick={() => handleDeleteProductItem(params.row._id)}>
+				<DeleteIcon />
+			</IconButton>
+		),
+	},
 ];
+
+const handleDeleteProductItem = (rowId) => {
+	axios
+		.delete(`http://localhost:3001/sales/${rowId}`)
+		.then((response) => {
+			// Handle the successful delete, e.g., remove the deleted row from the UI.
+			console.log(`Deleted item with _id: ${rowId}`);
+			// Instead of reloading the entire page, you can remove the deleted row from the state (rows).
+			setRows((prevRows) => prevRows.filter((row) => row._id !== rowId));
+		})
+		.catch((error) => {
+			console.error(`Error deleting item with _id ${rowId}: ${error}`);
+		});
+};
 
 function CustomPagination() {
 	const apiRef = useGridApiContext();
