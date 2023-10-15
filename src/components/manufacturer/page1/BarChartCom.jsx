@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   BarChart,
   Bar,
@@ -11,51 +11,6 @@ import {
   LabelList,
   ResponsiveContainer,
 } from "recharts";
-
-const data = [
-  {
-    name: "MID001",
-    Aug: 4000,
-    Sep: 2400,
-    amt: 2400,
-  },
-  {
-    name: "MID008",
-    Aug: 3000,
-    Sep: 1398,
-    amt: 2210,
-  },
-  {
-    name: "MID009",
-    Aug: 2000,
-    Sep: 8,
-    amt: 2290,
-  },
-  {
-    name: "MID023",
-    Aug: 2780,
-    Sep: 3908,
-    amt: 2000,
-  },
-  {
-    name: "MID009",
-    Aug: 18,
-    Sep: 4800,
-    amt: 2181,
-  },
-  {
-    name: "MID037",
-    Aug: 2390,
-    Sep: 3800,
-    amt: 2500,
-  },
-  {
-    name: "MID099",
-    Aug: 3490,
-    Sep: 4300,
-    amt: 2100,
-  },
-];
 
 const renderCustomizedLabel = (props) => {
   const { x, y, width, height, value } = props;
@@ -78,6 +33,37 @@ const renderCustomizedLabel = (props) => {
 };
 
 const BarChartCom = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:3001/manufacturers/");
+        if (response.ok) {
+          const jsonData = await response.json();
+
+          // Fetch predicted points from the new URL
+          // const predictedPoints = await fetchPredictedPoints();
+
+          const modifiedData = jsonData.map((item, index) => ({
+            name: item.id,
+            Oct: item.point,
+            Nov: (item.point * 105) / 100, // Use predicted points from the new URL
+            amt: 2100,
+          }));
+
+          setData(modifiedData);
+        } else {
+          console.error("Failed to fetch data");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
@@ -96,10 +82,10 @@ const BarChartCom = () => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="Aug" fill="#cbd5e1" minPointSize={5}>
+        <Bar dataKey="Oct" fill="#cbd5e1" minPointSize={5}>
           <LabelList dataKey="name" content={renderCustomizedLabel} />
         </Bar>
-        <Bar dataKey="Sep" fill="#64748b" minPointSize={10} />
+        <Bar dataKey="Nov" fill="#64748b" minPointSize={10} />
       </BarChart>
     </ResponsiveContainer>
   );
